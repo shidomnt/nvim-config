@@ -1,13 +1,9 @@
-"  _   ____  __  _  _________  ___  _______  __  _________  ___  _______ 
-" | | / / / / / / |/ / ___/ / / \ \/ / __/ |/ / / ___/ __ \/ _ \/ __/ _ \
-" | |/ / /_/ / /    / (_ / /_/ / \  / _//    / / /__/ /_/ / // / _// , _/
-" |___/\____/ /_/|_/\___/\____/  /_/___/_/|_/  \___/\____/____/___/_/|_|
-" Vim customized by Vu Nguyen Coder
-" (See my detailed tutorial here: https://youtu.be/Tp8i1EHsQ1Q )
-"
-" http://youtube.com/VuNguyenCoder
-" http://facebook.com/VuNguyenCoder
-
+" _____                               
+"/__   \_ __ __ _ _ __     /\  /\__ _ 
+"  / /\/ '__/ _` | '_ \   / /_/ / _` |
+" / /  | | | (_| | | | | / __  / (_| |
+" \/   |_|  \__,_|_| |_| \/ /_/ \__,_|
+"                                    
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General settings
@@ -15,9 +11,9 @@
 set mouse=a 				" Enable mouse
 set tabstop=4 				" 
 set shiftwidth=4 			" 
+set foldmethod=indent 		" 
 set listchars=tab:\¦\ 		" Tab charactor 
 set list
-set foldmethod=indent 		" 
 set foldlevelstart=99 		"  
 set number 					" Show line number
 set ignorecase 				" Enable case-sensitive 
@@ -61,6 +57,8 @@ nmap <M-Up> :resize -1<CR>
 " Search a hightlighted text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" Complier C/C++
+nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
