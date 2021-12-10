@@ -1,4 +1,4 @@
-# Vim Config by Vu Nguyen Coder
+# Vim Config 
 
 [Note]
 - Can run on both Window and Linux
@@ -10,3 +10,4 @@
 - Git
 - vim-plug
 - bat
+- rg
