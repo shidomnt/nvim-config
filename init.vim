@@ -96,6 +96,10 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Auto-reloading a file in VIM as soon as it changes on disk
 	Plug 'djoshea/vim-autoread'
+
+" Live Reload Server for html/css/js
+	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
+
 call plug#end()
 
 
