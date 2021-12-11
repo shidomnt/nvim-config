@@ -70,6 +70,7 @@ call plug#begin(stdpath('config').'/plugged')
 " Status bar
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'enricobacis/vim-airline-clock'
 
 " Terminal
 	Plug 'voldikss/vim-floaterm' 					" Float terminal
