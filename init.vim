@@ -32,19 +32,6 @@ else
 	set clipboard=unnamedplus
 endif
 
-" Auto reload content changed outside
-au CursorHold,CursorHoldI * checktime
-au FocusGained,BufEnter * :checktime
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-		\ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == ''
-			\ | checktime 
-		\ | endif
-autocmd FileChangedShellPost *
-		\ echohl WarningMsg 
-		\ | echo "File changed on disk. Buffer reloaded."
-		\ | echohl None
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -106,6 +93,9 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Source code version control 
 	Plug 'tpope/vim-fugitive' 						" Git
+
+" Auto-reloading a file in VIM as soon as it changes on disk
+	Plug 'djoshea/vim-autoread'
 call plug#end()
 
 
