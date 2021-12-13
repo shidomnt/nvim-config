@@ -11,6 +11,7 @@
 - vim-plug
 - bat
 - ripgrep
+- lazygit
 
 [Language Servers]
 - vscode-langservers-extracted for HTML,CSS,JSON (via npm)

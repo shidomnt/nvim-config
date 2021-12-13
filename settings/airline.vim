@@ -51,5 +51,4 @@ if !exists('g:airline_symbols')
   let g:airline_symbols.dirty='⚡'
 
 "Custom Clock
-let g:airline#extensions#clock#format = '%H:%M:%S'
-let g:airline#extensions#clock#updatetime = 1000
+let g:airline#extensions#clock#format = '%a %d-%b %H:%M'
