@@ -8,6 +8,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set mouse=a 				" Enable mouse
 set tabstop=4 				" 
 set shiftwidth=4 			" 
@@ -48,9 +49,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'unkiwii/vim-nerdtree-sync' 				" Sync current file 
 
 " File search
-Plug 'junegunn/fzf', 
-			\ { 'do': { -> fzf#install() } } 			" Fuzzy finder 
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -61,18 +61,17 @@ Plug 'enricobacis/vim-airline-clock'
 Plug 'voldikss/vim-floaterm' 					" Float terminal
 
 " Code intellisense
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol
+Plug 'hrsh7th/cmp-nvim-lsp'						" Auto Complete
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'ray-x/lsp_signature.nvim'
+Plug 'ray-x/lsp_signature.nvim'					"Hint"
 
 Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
-Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim' 
 Plug 'preservim/nerdcommenter' 					" Comment code 
 Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
@@ -82,10 +81,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
 " Code syntax highlight
-Plug 'yuezk/vim-js' 							" Javascript
-Plug 'MaxMEllon/vim-jsx-pretty' 				" JSX/React
-Plug 'jackguo380/vim-lsp-cxx-highlight'			" C++ syntax
-Plug 'uiiaoo/java-syntax.vim' 					" Java
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " Debugging
 Plug 'puremourning/vimspector' 					" Vimspector

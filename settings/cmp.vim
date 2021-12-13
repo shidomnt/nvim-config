@@ -19,17 +19,6 @@ end,
 		i = cmp.mapping.abort(),
 		c = cmp.mapping.close(),
 		}),
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif require("vsnip").expand_or_jumpable() then
-				require("vsnip").expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
 	-- Accept currently selected item. If none selected, `select` first item.
 	-- Set `select` to `false` to only confirm explicitly selected items.
 	['<Cr>'] = cmp.mapping.confirm({ select = false }),
