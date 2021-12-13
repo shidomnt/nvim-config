@@ -1,4 +1,4 @@
-" _____                               
+
 "/__   \_ __ __ _ _ __     /\  /\__ _ 
 "  / /\/ '__/ _` | '_ \   / /_/ / _` |
 " / /  | | | (_| | | | | / __  / (_| |
@@ -100,7 +100,8 @@ call plug#begin(stdpath('config').'/plugged')
 
 " Live Reload Server for html/css/js
 	Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
-
+" Github Copilot
+	Plug 'github/copilot.vim'
 call plug#end()
 
 
