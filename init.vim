@@ -76,12 +76,25 @@ call plug#begin(stdpath('config').'/plugged')
 	Plug 'voldikss/vim-floaterm' 					" Float terminal
 
 " Code intellisense
-	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server 
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-vsnip'
+	Plug 'hrsh7th/vim-vsnip'
+
+	Plug 'ray-x/lsp_signature.nvim'
 	Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
 	Plug 'alvan/vim-closetag'
 	Plug 'mattn/emmet-vim' 
 	Plug 'preservim/nerdcommenter' 					" Comment code 
 	Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
+
+"Snippet Plugin
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 " Code syntax highlight
 	Plug 'yuezk/vim-js' 							" Javascript
@@ -129,3 +142,5 @@ for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
 	execute 'source' setting_file
 endfor
 
+"Lua config
+lua require('config')
