@@ -100,6 +100,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 " Github Copilot
 Plug 'github/copilot.vim'
+
 call plug#end()
 
 
@@ -129,3 +130,5 @@ endfor
 
 "Lua config
 lua require('config')
+
+
