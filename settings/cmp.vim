@@ -7,7 +7,10 @@ cmp.setup({
 snippet = {
 	-- REQUIRED - you must specify a snippet engine
 	expand = function(args)
-	vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+	-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+	vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+	-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+	-- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 end,
 },
 	mapping = {
@@ -19,13 +22,17 @@ end,
 		i = cmp.mapping.abort(),
 		c = cmp.mapping.close(),
 		}),
+		['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
 	-- Accept currently selected item. If none selected, `select` first item.
 	-- Set `select` to `false` to only confirm explicitly selected items.
-	['<Cr>'] = cmp.mapping.confirm({ select = false }),
+	['<Cr>'] = cmp.mapping.confirm({ select = true }),
 	},
 sources = cmp.config.sources({
 { name = 'nvim_lsp' },
-{ name = 'vsnip' }, -- For vsnip users.
+-- { name = 'vsnip' }, -- For vsnip users.
+{ name = 'ultisnips' }, -- For ultisnips users.
+-- { name = 'luasnip' }, -- For luasnip users.
+-- { name = 'snippy' }, -- For snippy users.
 }, {
 { name = 'buffer' },
 })

@@ -10,8 +10,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set mouse=a 				" Enable mouse
-set tabstop=4 				" 
-set shiftwidth=4 			" 
+set tabstop=2 				" 
+set shiftwidth=2 			" 
 set foldmethod=indent 		" 
 set listchars=tab:\¦\ 		" Tab charactor 
 set list
@@ -68,9 +68,11 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'ray-x/lsp_signature.nvim'					"Hint
+
+" Plug 'hrsh7th/cmp-vsnip'						"vsnip for cmp"
+" Plug 'saadparwaiz1/cmp_luasnip'				"luasnip for cmp"
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 
 Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
 Plug 'mattn/emmet-vim' 
@@ -78,8 +80,13 @@ Plug 'preservim/nerdcommenter' 					" Comment code
 Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
 
 "Snippet Plugin
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'hrsh7th/vim-vsnip'						"vsnip
+" Plug 'hrsh7th/vim-vsnip-integ'				"vsnip
+" Plug 'L3MON4D3/LuaSnip'						"LuaSnip
+Plug 'SirVer/ultisnips'							"ultisnips
+
+" Snippet
+Plug 'epilande/vim-react-snippets'
 
 " Code syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
