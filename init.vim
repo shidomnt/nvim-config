@@ -71,7 +71,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'ray-x/lsp_signature.nvim'					"Hint"
+Plug 'ray-x/lsp_signature.nvim'					"Hint
 
 Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
 Plug 'mattn/emmet-vim' 
@@ -123,10 +123,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Settings for Windows
 
-if(has('win32'))
-	let g:python3_host_prog = 'C:/Python310/python'
-	let g:python_host_prog = 'C:/Python27/python'
-endif
+"if(has('win32'))
+"	let g:python3_host_prog = 'C:/Python310/python'
+"	let g:python_host_prog = 'C:/Python27/python'
+"endif
 
 " Other setting
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
