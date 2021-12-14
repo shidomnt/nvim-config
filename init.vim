@@ -18,8 +18,7 @@ set list
 set foldlevelstart=99 		"  
 set number 					" Show line number
 set ignorecase 				" Enable case-sensitive 
-set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
-language en                 " sets the language of the messages / ui (vim)
+set langmenu=en_US.utf8    " sets the language of the menu (gvim)
 
 " Disable backup
 set nobackup
@@ -90,6 +89,7 @@ Plug 'puremourning/vimspector' 					" Vimspector
 
 " Source code version control 
 Plug 'tpope/vim-fugitive' 						" Git
+Plug 'rbong/vim-flog'
 
 " Auto-reloading a file in VIM as soon as it changes on disk
 Plug 'djoshea/vim-autoread'
