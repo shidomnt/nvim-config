@@ -79,6 +79,9 @@ Plug 'mattn/emmet-vim'
 Plug 'preservim/nerdcommenter' 					" Comment code 
 Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
 
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
 "Snippet Plugin
 " Plug 'hrsh7th/vim-vsnip'						"vsnip
 " Plug 'hrsh7th/vim-vsnip-integ'				"vsnip
@@ -101,8 +104,6 @@ Plug 'rbong/vim-flog'
 " Auto-reloading a file in VIM as soon as it changes on disk
 Plug 'djoshea/vim-autoread'
 
-" Live Reload Server for html/css/js
-Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 " Github Copilot
 Plug 'github/copilot.vim'
 
