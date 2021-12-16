@@ -2,7 +2,7 @@
 map <silent> <F2> :NERDTreeToggle<CR>
 
 " Open the existing NERDTree on each new tab.
-"autocmd BufWinEnter * silent NERDTreeMirror
+" autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
 " Change arrow to expand/collapse tree
@@ -28,3 +28,5 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 " Hightlight current file
 let g:nerdtree_sync_cursorline = 1
 
+" Behavior when open a file in nerdtree
+let NERDTreeQuitOnOpen=0

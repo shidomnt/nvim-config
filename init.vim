@@ -9,13 +9,15 @@
 " => General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set mouse=a 				" Enable mouse
+" set mouse=a 				" Enable mouse
 set tabstop=2 				" 
 set shiftwidth=2 			" 
+set autoindent
+set smartindent
 set foldmethod=indent 		" 
-set listchars=tab:\¦\ 		" Tab charactor 
-set list
-set foldlevelstart=99 		"  
+" set listchars=tab:\¦\ 		" Tab charactor 
+" set list
+set foldlevelstart=99
 set number 					" Show line number
 set ignorecase 				" Enable case-sensitive 
 set langmenu=en_US.utf8    " sets the language of the menu (gvim)
@@ -77,10 +79,20 @@ Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
 Plug 'mattn/emmet-vim' 
 Plug 'preservim/nerdcommenter' 					" Comment code 
-Plug 'alvan/vim-closetag' 						" Auto close HTML/XML tag 
+
+Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
+"Format Code
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plug 'google/vim-glaive'
 
 "Snippet Plugin
 " Plug 'hrsh7th/vim-vsnip'						"vsnip

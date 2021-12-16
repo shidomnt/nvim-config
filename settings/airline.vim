@@ -44,11 +44,17 @@ if !exists('g:airline_symbols')
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = ''
   let g:airline_symbols.branch = ''
-  let g:airline_symbols.colnr = '   :'
+  let g:airline_symbols.colnr = '   '
   let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = '   :'
+  let g:airline_symbols.linenr = '   '
   let g:airline_symbols.maxlinenr = '☰ '
   let g:airline_symbols.dirty='⚡'
 
 "Custom Clock
-let g:airline#extensions#clock#format = '%a %H:%M'
+let g:airline#extensions#clock#format = '%H:%M  '
+let g:airline#extensions#clock#auto = 0
+function! AirlineInit()
+  let g:airline_section_b = airline#section#create(['clock', g:airline_symbols.space, g:airline_section_b])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
