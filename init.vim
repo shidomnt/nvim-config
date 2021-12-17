@@ -10,10 +10,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " set mouse=a 				" Enable mouse
-set tabstop=2 				" 
+set tabstop=8 				" 
+set expandtab
 set shiftwidth=2 			" 
 set autoindent
 set smartindent
+set cindent
 set foldmethod=indent 		" 
 " set listchars=tab:\¦\ 		" Tab charactor 
 " set list
@@ -42,7 +44,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin(stdpath('config').'/plugged')
 " Theme
-Plug 'joshdick/onedark.vim', 					" Dark theme
+" Plug 'joshdick/onedark.vim', 					" Dark theme
+Plug 'haishanh/night-owl.vim'
 
 " File browser
 Plug 'preservim/nerdTree' 						" File browser  
@@ -127,7 +130,7 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-colorscheme onedark
+" colorscheme onedark
 
 " Overwrite some color highlight 
 " if (has("autocmd"))
@@ -138,6 +141,16 @@ colorscheme onedark
 "           \ * call onedark#extend_highlight("LineNr", {"fg": {"gui": "#728083"}})
 "   augroup END
 " endif
+
+colorscheme night-owl
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+let g:lightline = { 'colorscheme': 'nightowl' }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
