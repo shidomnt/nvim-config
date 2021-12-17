@@ -105,6 +105,7 @@ Plug 'epilande/vim-react-snippets'
 
 " Code syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " Debugging
 Plug 'puremourning/vimspector' 					" Vimspector
@@ -129,14 +130,14 @@ call plug#end()
 colorscheme onedark
 
 " Overwrite some color highlight 
-if (has("autocmd"))
-	augroup colorextend
-		autocmd ColorScheme 
-					\ * call onedark#extend_highlight("Comment",{"fg": {"gui": "#728083"}})
-		autocmd ColorScheme 
-					\ * call onedark#extend_highlight("LineNr", {"fg": {"gui": "#728083"}})
-	augroup END
-endif
+" if (has("autocmd"))
+"   augroup colorextend
+"     autocmd ColorScheme
+"           \ * call onedark#extend_highlight("Comment",{"fg": {"gui": "#728083"}})
+"     autocmd ColorScheme
+"           \ * call onedark#extend_highlight("LineNr", {"fg": {"gui": "#728083"}})
+"   augroup END
+" endif
 
 " Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

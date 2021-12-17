@@ -22,10 +22,10 @@ end,
 		i = cmp.mapping.abort(),
 		c = cmp.mapping.close(),
 		}),
-		['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
 	-- Accept currently selected item. If none selected, `select` first item.
 	-- Set `select` to `false` to only confirm explicitly selected items.
-	['<Cr>'] = cmp.mapping.confirm({ select = true }),
+		['<Cr>'] = cmp.mapping.confirm({ select = true }),
 	},
 sources = cmp.config.sources({
 { name = 'nvim_lsp' },
