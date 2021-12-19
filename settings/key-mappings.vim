@@ -11,7 +11,7 @@ nmap <M-Up> :resize -1<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Switch buffer
-nnoremap <C-i> :bn<CR>
+nnoremap <silent> <C-i> :bn<CR>
 
 " Complier C/C++
 nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
