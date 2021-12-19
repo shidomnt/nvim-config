@@ -23,6 +23,7 @@ set foldlevelstart=99
 set number 					" Show line number
 set ignorecase 				" Enable case-sensitive 
 set langmenu=en_US.utf8    " sets the language of the menu (gvim)
+language en
 
 " Disable backup
 set nobackup
