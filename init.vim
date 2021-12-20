@@ -186,10 +186,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Settings for Windows
 
-"if(has('win32'))
-"	let g:python3_host_prog = 'C:/Python310/python'
-"	let g:python_host_prog = 'C:/Python27/python'
-"endif
+if(has('win32'))
+	let g:python3_host_prog = 'C:/Python310/python'
+	let g:python_host_prog = 'C:/Python27/python'
+endif
 
 " Other setting
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
