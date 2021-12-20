@@ -31,35 +31,22 @@ endfunction
 noremap <C-h> :nohl<CR>
 
 "Not auto close window when wipe a buffer
-function! CloseBuffer()
-    let curBuf = bufnr('%')
-    let curTab = tabpagenr()
-    exe 'bnext'
+function! BufferDelete()
+    if &modified
+        echohl ErrorMsg
+        echomsg "No write since last change. Not closing buffer."
+        echohl NONE
+    else
+        let s:total_nr_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
-    " If in last buffer, create empty buffer
-    if curBuf == bufnr('%')
-        exe 'enew'
+        if s:total_nr_buffers == 1
+            bdelete
+            echo "Buffer deleted. Created new buffer."
+        else
+            bprevious
+            bdelete #
+            echo "Buffer deleted."
+        endif
     endif
-
-    " Loop through tabs
-    for i in range(tabpagenr('$'))
-        " Go to tab (is there a way with inactive tabs?)
-        exe 'tabnext ' . (i + 1)
-        " Store active window nr to restore later
-        let curWin = winnr()
-        " Loop through windows pointing to buffer
-        let winnr = bufwinnr(curBuf)
-        while (winnr >= 0)
-            " Go to window and switch to next buffer
-            exe winnr . 'wincmd w | bnext'
-            " Restore active window
-            exe curWin . 'wincmd w'
-            let winnr = bufwinnr(curBuf)
-        endwhile
-    endfor
-
-    " Close buffer, restore active tab
-    exe 'bd' . curBuf
-    exe 'tabnext ' . curTab  
 endfunction
-map <silent> <Leader>q :call CloseBuffer()<cr>
+map <silent> <Leader>q :call BufferDelete()<cr>
