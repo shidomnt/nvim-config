@@ -17,7 +17,7 @@ nnoremap <silent> <C-i> :bn<CR>
 nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
 
 " Format Document
-nmap <Leader>format :FormatCode<CR> 
+nmap <Leader>fd :FormatCode<CR> 
 
 " Auto indent
 inoremap <expr> <CR> InsertMapForEnter()
@@ -33,5 +33,5 @@ function! InsertMapForEnter()
     endif
 endfunction
 
-" Select All
-nnoremap <c-a> ggVG
+"Remove Search Highlight
+noremap <C-h> :nohl<CR>

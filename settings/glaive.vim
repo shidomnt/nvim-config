@@ -1,3 +1,3 @@
 call glaive#Install()
 
-Glaive codefmt prettier_options=`['--config /home/tranha/.config/prettier/.prettierrc.json']`
+Glaive codefmt prettier_options=`['--no-semi', '--single-quote']`

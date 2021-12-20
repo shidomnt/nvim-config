@@ -10,17 +10,27 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " set mouse=a 				" Enable mouse
-set tabstop=8 				" 
+set tabstop=2 				" 
 set expandtab
 set shiftwidth=2 			" 
+set shiftround
+
+"indent
+set autowrite     " Automatically :write before running commands
 set autoindent
 set smartindent
 set cindent
+
+"Fold
 set foldmethod=indent 		" 
 " set listchars=tab:\¦\ 		" Tab charactor 
 " set list
+
+"Number
 set foldlevelstart=99
 set number 					" Show line number
+set relativenumber
+
 set ignorecase 				" Enable case-sensitive 
 set langmenu=en_US.utf8    " sets the language of the menu (gvim)
 
@@ -28,6 +38,18 @@ set langmenu=en_US.utf8    " sets the language of the menu (gvim)
 set nobackup
 set nowb
 set noswapfile
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Enable cursor line position tracking:
+set cursorline
+set cursorlineopt=number
+" Remove the underline from enabling cursorline:
+highlight clear CursorLine
+" Set line numbering to red background:
+highlight CursorLine ctermbg=234 cterm=NONE guifg=NONE guibg=#44475a gui=NONE
 
 syntax on
 
@@ -176,5 +198,4 @@ endfor
 
 "Lua config
 lua require('config')
-
 
