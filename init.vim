@@ -187,8 +187,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "Settings for Windows
 
 if(has('win32'))
-	let g:python3_host_prog = 'C:/Python310/python'
-	let g:python_host_prog = 'C:/Python27/python'
+  language en
+  let g:python3_host_prog = 'C:/Python310/python'
+  let g:python_host_prog = 'C:/Python27/python'
 endif
 
 " Other setting
