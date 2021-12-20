@@ -2,7 +2,6 @@ set completeopt=menu,menuone,noselect
 lua <<EOF
 -- Setup nvim-cmp.
 local cmp = require'cmp'
-
 cmp.setup({
 snippet = {
 	-- REQUIRED - you must specify a snippet engine
@@ -64,10 +63,17 @@ sources = cmp.config.sources({
 	  capabilities = capabilities
 	  }
   require('lspconfig')['html'].setup {
-	  capabilities = capabilities,
+	  capabilities = capabilities
 	  }
   require('lspconfig')['cssls'].setup {
 	  capabilities = capabilities
 	  }
+--  require('lspconfig')['tailwindcss'].setup {
+--	  capabilities = capabilities
+--	  }
+  require('lspconfig')['emmet_ls'].setup {
+	  capabilities = capabilities,
+	  }
+
 EOF
 

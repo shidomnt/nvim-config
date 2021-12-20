@@ -23,11 +23,11 @@ set cindent
 
 "Fold
 set foldmethod=indent 		" 
+set foldlevelstart=99
 " set listchars=tab:\¦\ 		" Tab charactor 
 " set list
 
 "Number
-set foldlevelstart=99
 set number 					" Show line number
 set relativenumber
 
@@ -103,7 +103,6 @@ Plug 'ray-x/lsp_signature.nvim'					"Hint
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 
 Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
-Plug 'mattn/emmet-vim' 
 Plug 'preservim/nerdcommenter' 					" Comment code 
 
 Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
