@@ -10,14 +10,8 @@ nmap <M-Up> :resize -1<CR>
 " Search a hightlighted text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" Switch buffer
-nnoremap <silent> <C-i> :bn<CR>
-
 " Complier C/C++
 nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
-
-" Format Document
-nmap <Leader>fd :FormatCode<CR> 
 
 " Auto indent
 inoremap <expr> <CR> InsertMapForEnter()
@@ -35,3 +29,37 @@ endfunction
 
 "Remove Search Highlight
 noremap <C-h> :nohl<CR>
+
+"Not auto close window when wipe a buffer
+function! CloseBuffer()
+    let curBuf = bufnr('%')
+    let curTab = tabpagenr()
+    exe 'bnext'
+
+    " If in last buffer, create empty buffer
+    if curBuf == bufnr('%')
+        exe 'enew'
+    endif
+
+    " Loop through tabs
+    for i in range(tabpagenr('$'))
+        " Go to tab (is there a way with inactive tabs?)
+        exe 'tabnext ' . (i + 1)
+        " Store active window nr to restore later
+        let curWin = winnr()
+        " Loop through windows pointing to buffer
+        let winnr = bufwinnr(curBuf)
+        while (winnr >= 0)
+            " Go to window and switch to next buffer
+            exe winnr . 'wincmd w | bnext'
+            " Restore active window
+            exe curWin . 'wincmd w'
+            let winnr = bufwinnr(curBuf)
+        endwhile
+    endfor
+
+    " Close buffer, restore active tab
+    exe 'bd' . curBuf
+    exe 'tabnext ' . curTab  
+endfunction
+map <silent> <Leader>q :call CloseBuffer()<cr>

@@ -64,7 +64,7 @@ sources = cmp.config.sources({
 	  capabilities = capabilities
 	  }
   require('lspconfig')['html'].setup {
-	  capabilities = capabilities
+	  capabilities = capabilities,
 	  }
   require('lspconfig')['cssls'].setup {
 	  capabilities = capabilities

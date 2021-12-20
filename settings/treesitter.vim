@@ -12,8 +12,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 local filetypes = {
-  'html', 'javascript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue'
-}
+  'html', 'javascript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue'}
 local skip_tags = {
   'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'slot',
   'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr','menuitem'
