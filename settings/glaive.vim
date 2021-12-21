@@ -1,8 +1,6 @@
 call glaive#Install()
 
-Glaive codefmt prettier_executable='prettier'
-Glaive codefmt prettier_options=`['--no-semi', '--single-quote']`
-
+Glaive codefmt prettier_options=`['--no-semi', '--single-quote', '--tab-width 4', '--use-tabs', '--trailing-comma all']`
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier

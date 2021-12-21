@@ -13,9 +13,8 @@ if has('win32')
 endif
 
 " Set color
-hi Floaterm guibg=Grey15
-hi FloatermBorder guifg=Orange guibg=DarkGreen
-"hi FloatermNC guibg=darkred
+hi FloatermBorder guifg=Orange
+" hi FloatermNC guibg=darkred
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -42,8 +41,3 @@ tnoremap <silent> 	<leader>tt 		<C-\><C-n>:FloatermToggle<CR>
 " Focus terminal 
 nnoremap <silent> 	<leader>tf 		<C-\><C-n><C-W><Left>
 tnoremap <silent> 	<leader>tf 		<C-\><C-n><C-W><Left>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Hotkey to run other console apps
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

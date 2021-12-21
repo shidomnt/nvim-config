@@ -12,7 +12,7 @@
 - vim-plug
 - bat
 - ripgrep
-- lazygit
+- Gcc lastest (mingw)
 
 [Language Servers]
 - vscode-langservers-extracted for HTML,CSS,JSON 

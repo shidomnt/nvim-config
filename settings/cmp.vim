@@ -68,12 +68,11 @@ sources = cmp.config.sources({
   require('lspconfig')['cssls'].setup {
 	  capabilities = capabilities
 	  }
---  require('lspconfig')['tailwindcss'].setup {
---	  capabilities = capabilities
---	  }
+  require('lspconfig')['jsonls'].setup {
+      capabilities = capabilities
+      }
   require('lspconfig')['emmet_ls'].setup {
-	  capabilities = capabilities,
+	  capabilities = capabilities
 	  }
-
 EOF
 
