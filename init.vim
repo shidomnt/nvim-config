@@ -59,24 +59,24 @@ else
 	set clipboard=unnamedplus
 endif
 
-function! CloseHiddenBuffers()
-    " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    " close any buffers hidden
-    " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    let open_buffers = []
-
-    for i in range(tabpagenr('$'))
-        call extend(open_buffers, tabpagebuflist(i + 1))
-    endfor
-
-    for num in range(1, bufnr("$") + 1)
-        if buflisted(num) && index(open_buffers, num) == -1
-            exec "bdelete ".num
-        endif
-    endfor
-endfunction
-
-au BufEnter * call CloseHiddenBuffers()
+" function! CloseHiddenBuffers()
+"     " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"     " close any buffers hidden
+"     " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"     let open_buffers = []
+"
+"     for i in range(tabpagenr('$'))
+"         call extend(open_buffers, tabpagebuflist(i + 1))
+"     endfor
+"
+"     for num in range(1, bufnr("$") + 1)
+"         if buflisted(num) && index(open_buffers, num) == -1
+"             exec "bdelete ".num
+"         endif
+"     endfor
+" endfunction
+"
+" au BufEnter * call CloseHiddenBuffers()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
@@ -98,10 +98,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'tpope/vim-eunuch'
 
+" Terminal
+Plug 'voldikss/vim-floaterm'
+
 " Status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
 
 " Code intellisense
 Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol

@@ -14,7 +14,7 @@ cfg = {
 	hint_scheme = "String",
 	auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
 	extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-	transparency = 60, -- disabled by default, allow floating win transparent value 1~100
+	transparency = nil, -- disabled by default, allow floating win transparent value 1~100
 	timer_interval = 1000, -- default timer check interval set to lower value if you want to reduce latency
 	toggle_key = '<M-e>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 	}
