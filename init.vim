@@ -45,13 +45,6 @@ set noswapfile
 set splitbelow
 set splitright
 
-" Enable copying from vim to clipboard
-if has('win32')
-	set clipboard=unnamed  
-else
-	set clipboard=unnamedplus
-endif
-
 " Enable cursor line position tracking:
 set cursorline 
 
@@ -59,24 +52,31 @@ set timeoutlen=1000
 
 set ttimeoutlen=0
 
-" function! CloseHiddenBuffers()
-"     " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-"     " close any buffers hidden
-"     " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-"     let open_buffers = []
-"
-"     for i in range(tabpagenr('$'))
-"         call extend(open_buffers, tabpagebuflist(i + 1))
-"     endfor
-"
-"     for num in range(1, bufnr("$") + 1)
-"         if buflisted(num) && index(open_buffers, num) == -1
-"             exec "bdelete ".num
-"         endif
-"     endfor
-" endfunction
-"
-" au BufEnter * call CloseHiddenBuffers()
+" Enable copying from vim to clipboard
+if has('win32')
+	set clipboard=unnamed  
+else
+	set clipboard=unnamedplus
+endif
+
+function! CloseHiddenBuffers()
+    " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    " close any buffers hidden
+    " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    let open_buffers = []
+
+    for i in range(tabpagenr('$'))
+        call extend(open_buffers, tabpagebuflist(i + 1))
+    endfor
+
+    for num in range(1, bufnr("$") + 1)
+        if buflisted(num) && index(open_buffers, num) == -1
+            exec "bdelete ".num
+        endif
+    endfor
+endfunction
+
+au BufEnter * call CloseHiddenBuffers()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
@@ -102,9 +102,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
-
-" Terminal
-Plug 'voldikss/vim-floaterm' 					" Float terminal
 
 " Code intellisense
 Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol
@@ -169,6 +166,11 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" Glaive config
+call glaive#Install()
+Glaive codefmt prettier_options=`['--no-semi', '--single-quote', '--tab-width 2', '--use-tabs', '--trailing-comma all']`
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
