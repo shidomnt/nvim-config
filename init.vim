@@ -10,9 +10,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 " set mouse=a 				" Enable mouse
-set tabstop=4 				" 
+set tabstop=2 				" 
 set expandtab
-set shiftwidth=4 			" 
+set shiftwidth=2 			" 
 set shiftround
 
 set autowrite     " Automatically :write before running commands
@@ -52,9 +52,32 @@ else
 	set clipboard=unnamedplus
 endif
 
-set lazyredraw
 " Enable cursor line position tracking:
 set cursorline 
+
+set timeoutlen=1000
+
+set ttimeoutlen=0
+
+" function! CloseHiddenBuffers()
+"     " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"     " close any buffers hidden
+"     " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"     let open_buffers = []
+"
+"     for i in range(tabpagenr('$'))
+"         call extend(open_buffers, tabpagebuflist(i + 1))
+"     endfor
+"
+"     for num in range(1, bufnr("$") + 1)
+"         if buflisted(num) && index(open_buffers, num) == -1
+"             exec "bdelete ".num
+"         endif
+"     endfor
+" endfunction
+"
+" au BufEnter * call CloseHiddenBuffers()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
 " (used for Vim-plug - https://github.com/junegunn/vim-plug)
@@ -132,6 +155,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Nvim cmp
+set completeopt=menu,menuone,noselect
+
 " Set theme 
 colorscheme onedark
 if (empty($TMUX))

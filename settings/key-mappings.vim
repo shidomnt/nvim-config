@@ -7,8 +7,20 @@ nmap <M-Left> :vertical resize -1<CR>
 nmap <M-Down> :resize +1<CR>
 nmap <M-Up> :resize -1<CR>
 
+" Open New Tab
+noremap tt :tab split<CR>
+
+"Close Current Tab
+noremap tw :wq<CR>
+
+"Switch Current Tab
+noremap tp :tabnext<CR>
+
 " Search a hightlighted text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" Format
+nnoremap <Leader>fd :FormatCode<CR>
 
 " Complier C/C++
 nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
@@ -50,3 +62,8 @@ function! BufferDelete()
     endif
 endfunction
 map <silent> <Leader>q :call BufferDelete()<cr>
+
+" Telescope
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
