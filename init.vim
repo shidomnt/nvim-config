@@ -87,11 +87,8 @@ call plug#begin(stdpath('config').'/plugged')
 Plug 'joshdick/onedark.vim', 					" Dark theme
 
 " File browser
-Plug 'preservim/nerdTree' 						" File browser  
-Plug 'Xuyuanp/nerdtree-git-plugin' 				" Git status
-Plug 'ryanoasis/vim-devicons' 					" Icon
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'unkiwii/vim-nerdtree-sync' 				" Sync current file 
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons'
 
 " File System
 Plug 'nvim-lua/plenary.nvim'
@@ -102,8 +99,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'voldikss/vim-floaterm'
 
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
 
 " Code intellisense
 Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol
@@ -154,6 +150,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Nvim tree
+let g:nvim_tree_highlight_opened_files = 1
+highlight NvimTreeFolderIcon guibg=blue
 
 "Nvim cmp
 set completeopt=menu,menuone,noselect

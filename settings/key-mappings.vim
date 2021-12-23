@@ -85,3 +85,7 @@ tnoremap <silent> 	<leader>tp 		<C-\><C-n>:FloatermPrev<CR>
 " Toggle terminal
 nnoremap <silent> 	<leader>tt 		:FloatermToggle<CR>
 tnoremap <silent> 	<leader>tt 		<C-\><C-n>:FloatermToggle<CR>
+
+nnoremap <F2> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>

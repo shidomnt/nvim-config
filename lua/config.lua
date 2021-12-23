@@ -5,7 +5,7 @@
 cfg = {
 	floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
-	floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:
+	floating_window_above_cur_line = false, -- try to place the floating above the current line when possible Note:
 	-- will set to true when fully tested, set to false will use whichever side has more space
 	-- this setting will be helpful if you do not want the PUM and floating win overlap
 	fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
@@ -13,14 +13,20 @@ cfg = {
 	hint_prefix = "🐼 ",  -- Panda for parameter
 	hint_scheme = "String",
 	auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
-	extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+  always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
 	transparency = nil, -- disabled by default, allow floating win transparent value 1~100
+   max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+                   -- to view the hiding contents
+  max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
 	timer_interval = 1000, -- default timer check interval set to lower value if you want to reduce latency
-	toggle_key = '<M-e>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+	toggle_key = '<M-e>', -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+  handler_opts = {
+    border = "rounded"   -- double, rounded, single, shadow, none
+  },
 	}
 
 -- recommanded:
-require'lsp_signature'.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
+require'lsp_signature'.setup(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
 
 -------------------------------------------------------------------
 -- => Config for Nvim cmp
@@ -117,13 +123,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
-local filetypes = {
-  'html', 'javascript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue'}
-local skip_tags = {
-  'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'slot',
-  'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr','menuitem'
-}
-
 require'nvim-treesitter.configs'.setup {
 ensure_installed = { "c", "cpp", "css","c_sharp" ,"hjson", "html","javascript","json", "json5", "jsonc", "lua", "php", "python", "regex", "scss","tsx","typescript","vim" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
@@ -157,38 +156,107 @@ ensure_installed = { "c", "cpp", "css","c_sharp" ,"hjson", "html","javascript","
 
 require('telescope').setup{
   defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
     mappings = {
       i = {
-        -- map actions.which_key to <C-h> (default: <C-/>)
-        -- actions.which_key shows the mappings for your picker,
-        -- e.g. git_{create, delete, ...}
         ["<C-h>"] = "which_key"
       }
     }
   },
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
-	find_files = {
+	  find_files = {
       theme = "dropdown",
     },
-	live_grep = {
+	  live_grep = {
       theme = "dropdown",
     }
   },
-  extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
+}
+
+
+-------------------------------------------------------------------
+-- => Config for Lualine
+-------------------------------------------------------------------
+require'lualine'.setup {
+  sections = {
+    lualine_b = {
+      {
+        'filename',
+        path = 1,
+      }
+    },
+    lualine_c = {'branch', 'diff'},
+    lualine_x = {'encoding', 'filetype'},
+    lualine_z = {'location', 'diagnostics'},
+  },
+  tabline = {
+    lualine_a = {'buffers'},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'tabs'}
   }
 }
 
+-------------------------------------------------------------------
+-- => Config for lsp_signature
+-------------------------------------------------------------------
+require'nvim-tree'.setup {
+  -- disable_netrw       = true,
+  -- hijack_netrw        = true,
+  -- open_on_setup       = false,
+  -- ignore_ft_on_setup  = {},
+  -- auto_close          = false,
+  -- open_on_tab         = false,
+  -- hijack_cursor       = false,
+  -- update_cwd          = false,
+  -- update_to_buf_dir   = {
+  --   enable = true,
+  --   auto_open = true,
+  -- },
+  -- diagnostics = {
+  --   enable = false,
+  --   icons = {
+  --     hint = "",
+  --     info = "",
+  --     warning = "",
+  --     error = "",
+  --   }
+  -- },
+  -- update_focused_file = {
+  --   enable      = false,
+  --   update_cwd  = false,
+  --   ignore_list = {}
+  -- },
+  -- system_open = {
+  --   cmd  = nil,
+  --   args = {}
+  -- },
+  -- filters = {
+  --   dotfiles = false,
+  --   custom = {}
+  -- },
+  -- git = {
+  --   enable = true,
+  --   ignore = true,
+  --   timeout = 500,
+  -- },
+  -- view = {
+  --   width = 30,
+  --   height = 30,
+  --   hide_root_folder = false,
+  --   side = 'left',
+  --   auto_resize = false,
+  --   mappings = {
+  --     custom_only = false,
+  --     list = {}
+  --   },
+  --   number = false,
+  --   relativenumber = false,
+  --   signcolumn = "yes"
+  -- },
+  -- trash = {
+  --   cmd = "trash",
+  --   require_confirm = true
+  -- }
+}
