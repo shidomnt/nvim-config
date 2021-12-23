@@ -174,8 +174,8 @@ require('telescope').setup{
 
 
 -------------------------------------------------------------------
--- => Config for Lualine
--------------------------------------------------------------------
+-- => Config for Lualine / Tabline
+-------------------------------------------------------------------require'tabline'.setup {enable = false}
 require'lualine'.setup {
   sections = {
     lualine_b = {
@@ -185,7 +185,7 @@ require'lualine'.setup {
       }
     },
     lualine_c = {'branch', 'diff'},
-    lualine_x = {'encoding', 'filetype'},
+    lualine_x = {'encoding','fileformat' ,'filetype'},
     lualine_z = {'location', 'diagnostics'},
   },
   tabline = {
@@ -194,69 +194,29 @@ require'lualine'.setup {
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {'tabs'}
+    lualine_z = {
+      {
+        'tabs',
+        mode = 2,
+      }
+    },
+  },
+  extensions = {
+    'nvim-tree'
   }
 }
 
 -------------------------------------------------------------------
--- => Config for lsp_signature
+-- => Config for nvim tree
 -------------------------------------------------------------------
-require'nvim-tree'.setup {
-  -- disable_netrw       = true,
-  -- hijack_netrw        = true,
-  -- open_on_setup       = false,
-  -- ignore_ft_on_setup  = {},
-  -- auto_close          = false,
-  -- open_on_tab         = false,
-  -- hijack_cursor       = false,
-  -- update_cwd          = false,
-  -- update_to_buf_dir   = {
-  --   enable = true,
-  --   auto_open = true,
-  -- },
-  -- diagnostics = {
-  --   enable = false,
-  --   icons = {
-  --     hint = "",
-  --     info = "",
-  --     warning = "",
-  --     error = "",
-  --   }
-  -- },
-  -- update_focused_file = {
-  --   enable      = false,
-  --   update_cwd  = false,
-  --   ignore_list = {}
-  -- },
-  -- system_open = {
-  --   cmd  = nil,
-  --   args = {}
-  -- },
-  -- filters = {
-  --   dotfiles = false,
-  --   custom = {}
-  -- },
-  -- git = {
-  --   enable = true,
-  --   ignore = true,
-  --   timeout = 500,
-  -- },
-  -- view = {
-  --   width = 30,
-  --   height = 30,
-  --   hide_root_folder = false,
-  --   side = 'left',
-  --   auto_resize = false,
-  --   mappings = {
-  --     custom_only = false,
-  --     list = {}
-  --   },
-  --   number = false,
-  --   relativenumber = false,
-  --   signcolumn = "yes"
-  -- },
-  -- trash = {
-  --   cmd = "trash",
-  --   require_confirm = true
-  -- }
-}
+require'nvim-tree'.setup {}
+
+-------------------------------------------------------------------
+-- => Config for nvim autopairs
+-------------------------------------------------------------------
+require('nvim-autopairs').setup{}
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
+

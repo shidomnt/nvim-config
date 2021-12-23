@@ -52,32 +52,6 @@ set timeoutlen=1000
 
 set ttimeoutlen=0
 
-" Enable copying from vim to clipboard
-if has('win32')
-	set clipboard=unnamed  
-else
-	set clipboard=unnamedplus
-endif
-
-" function! CloseHiddenBuffers()
-"     " >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-"     " close any buffers hidden
-"     " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-"     let open_buffers = []
-"
-"     for i in range(tabpagenr('$'))
-"         call extend(open_buffers, tabpagebuflist(i + 1))
-"     endfor
-"
-"     for num in range(1, bufnr("$") + 1)
-"         if buflisted(num) && index(open_buffers, num) == -1
-"             exec "bdelete ".num
-"         endif
-"     endfor
-" endfunction
-"
-" au BufEnter * call CloseHiddenBuffers()
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
 " (used for Vim-plug - https://github.com/junegunn/vim-plug)
@@ -112,7 +86,7 @@ Plug 'ray-x/lsp_signature.nvim'					"Hint
 
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 
-Plug 'jiangmiao/auto-pairs' 					" Parenthesis auto 
+Plug 'windwp/nvim-autopairs'            " Auto pairs
 Plug 'preservim/nerdcommenter' 					" Comment code 
 
 Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
@@ -181,10 +155,14 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Settings for Windows
 
-if(has('win32'))
+if has('win32')
+" Enable copying from vim to clipboard
+	set clipboard=unnamed  
   language en
   let g:python3_host_prog = 'C:/Python310/python'
   let g:python_host_prog = 'C:/Python27/python'
+else
+	set clipboard=unnamedplus
 endif
 
 " Other setting

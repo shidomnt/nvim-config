@@ -25,20 +25,6 @@ nnoremap <Leader>fd :FormatCode<CR>
 " Complier C/C++
 nmap <Leader>g++ :!g++ %:t -g -o %:r<CR><CR>
 
-" Auto indent
-inoremap <expr> <CR> InsertMapForEnter()
-function! InsertMapForEnter()
-    if pumvisible()
-        return "\<C-y>"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
-        return "\<CR>\<Esc>O"
-    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
-        return "\<CR>\<Esc>O"
-    else
-        return "\<CR>"
-    endif
-endfunction
-
 "Remove Search Highlight
 noremap <C-h> :nohl<CR>
 
@@ -89,3 +75,19 @@ tnoremap <silent> 	<leader>tt 		<C-\><C-n>:FloatermToggle<CR>
 nnoremap <F2> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
+
+" Vim Spector
+nnoremap 	<Leader>dl :call vimspector#Launch()<CR>
+nnoremap 	<Leader>ds :call vimspector#Reset()<CR>
+nnoremap 	<Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap 	<Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap 	<Leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nnoremap 	<Leader>de :call vimspector#StepOut()<CR>
+nnoremap 	<Leader>di :call vimspector#StepInto()<CR>
+nnoremap 	<Leader>do :call vimspector#StepOver()<CR>
+
+nmap 		<Leader>dr <Plug>VimspectorRestart
+
+
