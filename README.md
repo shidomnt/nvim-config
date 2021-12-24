@@ -10,7 +10,6 @@
 - Ruby (optional)
 - Git
 - vim-plug
-- bat
 - ripgrep
 - Gcc lastest (mingw)
 
