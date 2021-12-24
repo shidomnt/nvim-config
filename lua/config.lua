@@ -1,34 +1,4 @@
 -------------------------------------------------------------------
--- => Config for lsp_signature
--------------------------------------------------------------------
-
-cfg = {
-	floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
-
-	floating_window_above_cur_line = false, -- try to place the floating above the current line when possible Note:
-	-- will set to true when fully tested, set to false will use whichever side has more space
-	-- this setting will be helpful if you do not want the PUM and floating win overlap
-	fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
-	hint_enable = false, -- virtual hint enable
-	hint_prefix = "🐼 ",  -- Panda for parameter
-	hint_scheme = "String",
-	auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
-  always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
-	transparency = nil, -- disabled by default, allow floating win transparent value 1~100
-   max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
-                   -- to view the hiding contents
-  max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-	timer_interval = 1000, -- default timer check interval set to lower value if you want to reduce latency
-	toggle_key = '<M-e>', -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
-  handler_opts = {
-    border = "rounded"   -- double, rounded, single, shadow, none
-  },
-	}
-
--- recommanded:
-require'lsp_signature'.setup(cfg, bufnr) -- no need to specify bufnr if you don't use toggle_key
-
--------------------------------------------------------------------
 -- => Config for Nvim cmp
 -------------------------------------------------------------------
 -- Setup nvim-cmp.
@@ -86,26 +56,50 @@ sources = cmp.config.sources({
 
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-------------------------------------------------------------------
+-- => Config for Nvim cmp
+-------------------------------------------------------------------
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+end
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['tsserver'].setup {
-	  capabilities = capabilities
-	  }
-  require('lspconfig')['clangd'].setup {
-	  capabilities = capabilities
-	  }
-  require('lspconfig')['html'].setup {
-	  capabilities = capabilities
-	  }
-  require('lspconfig')['cssls'].setup {
-	  capabilities = capabilities
-	  }
-  require('lspconfig')['jsonls'].setup {
-      capabilities = capabilities
-      }
-  require('lspconfig')['emmet_ls'].setup {
-	  capabilities = capabilities
-    };    
+  local servers = {'emmet_ls', 'jsonls', 'tsserver', 'cssls', 'html', 'clangd' }
+  local nvim_lsp = require('lspconfig')
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+	    capabilities = capabilities
+    }
+  end
 
 -------------------------------------------------------------------
 -- => Config for Tree sitter
@@ -139,15 +133,6 @@ ensure_installed = { "c", "cpp", "css","c_sharp" ,"hjson", "html","javascript","
 	autotag = {
     enable = true,
   },
-	refactor = {
-    highlight_current_scope = { enable = false },
-		smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "grr",
-      },
-    },
-  },
 }
 
 -------------------------------------------------------------------
@@ -174,8 +159,8 @@ require('telescope').setup{
 
 
 -------------------------------------------------------------------
--- => Config for Lualine / Tabline
--------------------------------------------------------------------require'tabline'.setup {enable = false}
+-- => Config for Lualine
+-------------------------------------------------------------------
 require'lualine'.setup {
   sections = {
     lualine_b = {
@@ -184,13 +169,13 @@ require'lualine'.setup {
         path = 1,
       }
     },
-    lualine_c = {'branch', 'diff'},
+    lualine_c = {'branch', 'diff', 'diagnostics'},
     lualine_x = {'encoding','fileformat' ,'filetype'},
-    lualine_z = {'location', 'diagnostics'},
+    lualine_z = {'location'},
   },
   tabline = {
-    lualine_a = {'buffers'},
-    lualine_b = {},
+    lualine_a = {},
+    lualine_b = {'buffers'},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
@@ -209,7 +194,16 @@ require'lualine'.setup {
 -------------------------------------------------------------------
 -- => Config for nvim tree
 -------------------------------------------------------------------
-require'nvim-tree'.setup {}
+require'nvim-tree'.setup {
+  update_focused_file = {
+    enable      = false,
+    update_cwd  = false,
+    ignore_list = {}
+  },
+  view = {
+    auto_resize = true,
+  },
+}
 
 -------------------------------------------------------------------
 -- => Config for nvim autopairs

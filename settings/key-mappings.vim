@@ -11,7 +11,7 @@ nmap <M-Up> :resize -1<CR>
 noremap tt :tab split<CR>
 
 "Close Current Tab
-noremap tw :wq<CR>
+noremap tw :tabclose<CR>
 
 "Switch Current Tab
 noremap tp :tabnext<CR>

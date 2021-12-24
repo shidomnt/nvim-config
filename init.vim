@@ -24,8 +24,9 @@ set cindent
 filetype plugin indent on
 
 "Fold
-set foldmethod=indent 		" 
-set foldlevelstart=99
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldminlines=100
 set listchars=tab:\¦\ 		" Tab charactor
 set list
 
@@ -67,7 +68,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 " File System
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'tpope/vim-eunuch'
 
 " Terminal
 Plug 'voldikss/vim-floaterm'
@@ -82,7 +82,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'ray-x/lsp_signature.nvim'					"Hint
 
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 
@@ -94,11 +93,6 @@ Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
-"Format Code
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-
 "Snippet Plugin
 Plug 'SirVer/ultisnips'							"ultisnips
 
@@ -107,7 +101,6 @@ Plug 'epilande/vim-react-snippets'
 
 " Code syntax highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
 
 " Debugging
 Plug 'puremourning/vimspector' 					" Vimspector
@@ -127,6 +120,13 @@ call plug#end()
 
 " Nvim tree
 let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \}
 highlight NvimTreeFolderIcon guibg=blue
 
 "Nvim cmp
@@ -142,11 +142,6 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-
-" Glaive config
-call glaive#Install()
-Glaive codefmt prettier_options=`['--no-semi', '--single-quote', '--tab-width 2', '--use-tabs', '--trailing-comma all']`
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
