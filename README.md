@@ -7,7 +7,6 @@
 [Requirement]
 - NodeJS
 - Python
-- Ruby (optional)
 - Git
 - vim-plug
 - ripgrep
