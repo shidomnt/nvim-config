@@ -5,28 +5,28 @@
 local cmp = require'cmp'
 cmp.setup({
 snippet = {
-	-- REQUIRED - you must specify a snippet engine
-	expand = function(args)
-	-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-	vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-	-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-	-- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+  -- REQUIRED - you must specify a snippet engine
+  expand = function(args)
+  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+  vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+  -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+  -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 end,
 },
-	mapping = {
-		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		['<C-e>'] = cmp.mapping({
-		i = cmp.mapping.abort(),
-		c = cmp.mapping.close(),
-		}),
-	  ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-	-- Accept currently selected item. If none selected, `select` first item.
-	-- Set `select` to `false` to only confirm explicitly selected items.
-		['<Cr>'] = cmp.mapping.confirm({ select = true }),
-	},
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+    i = cmp.mapping.abort(),
+    c = cmp.mapping.close(),
+    }),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+  -- Accept currently selected item. If none selected, `select` first item.
+  -- Set `select` to `false` to only confirm explicitly selected items.
+    ['<Cr>'] = cmp.mapping.confirm({ select = false }),
+  },
 sources = cmp.config.sources({
 { name = 'nvim_lsp' },
 -- { name = 'vsnip' }, -- For vsnip users.
@@ -40,25 +40,27 @@ sources = cmp.config.sources({
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
-	  sources = {
-		  { name = 'buffer' }
-		  }
-	  })
+    sources = {
+      { name = 'buffer' }
+      }
+    })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-	  sources = cmp.config.sources({
-	  { name = 'path' }
-	  }, {
-	  { name = 'cmdline' }
-	  })
+    sources = cmp.config.sources({
+    { name = 'path' }
+    }, {
+    { name = 'cmdline' }
+    })
   })
 
-  -- Setup lspconfig.
+  -- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+---------------------------------------------------------------------
+-- => Config for Lsp config
+---------------------------------------------------------------------
+  local nvim_lsp = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--------------------------------------------------------------------
--- => Config for Nvim cmp
--------------------------------------------------------------------
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -93,14 +95,16 @@ local on_attach = function(client, bufnr)
 end
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   local servers = {'emmet_ls', 'jsonls', 'tsserver', 'cssls', 'html', 'clangd' }
-  local nvim_lsp = require('lspconfig')
+
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
-	    capabilities = capabilities
+      capabilities = capabilities,
+        flags = {
+        debounce_text_changes = 150,
+      }
     }
   end
-
 -------------------------------------------------------------------
 -- => Config for Tree sitter
 -------------------------------------------------------------------

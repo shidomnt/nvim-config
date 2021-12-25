@@ -1,4 +1,3 @@
-
 "/__   \_ __ __ _ _ __     /\  /\__ _ 
 "  / /\/ '__/ _` | '_ \   / /_/ / _` |
 " / /  | | | (_| | | | | / __  / (_| |
@@ -35,7 +34,6 @@ set number 					" Show line number
 set relativenumber
 
 set ignorecase 				" Enable case-sensitive 
-set langmenu=en_US.utf8    " sets the language of the menu (gvim)
 
 " Disable backup
 set nobackup
@@ -48,10 +46,6 @@ set splitright
 
 " Enable cursor line position tracking:
 set cursorline 
-
-set timeoutlen=1000
-
-set ttimeoutlen=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin list
@@ -82,7 +76,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
 
 Plug 'windwp/nvim-autopairs'            " Auto pairs
@@ -90,13 +83,12 @@ Plug 'preservim/nerdcommenter' 					" Comment code
 
 Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
 
+" . command
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
-"Snippet Plugin
+"Snippet 
 Plug 'SirVer/ultisnips'							"ultisnips
-
-" Snippet
 Plug 'epilande/vim-react-snippets'
 
 " Code syntax highlight
@@ -117,7 +109,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Nvim tree
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_git_hl = 1
@@ -128,9 +119,6 @@ let g:nvim_tree_show_icons = {
     \ 'folder_arrows': 1,
     \}
 highlight NvimTreeFolderIcon guibg=blue
-
-"Nvim cmp
-set completeopt=menu,menuone,noselect
 
 " Set theme 
 colorscheme onedark
@@ -167,3 +155,5 @@ endfor
 
 "Lua config
 lua require('config')
+
+
