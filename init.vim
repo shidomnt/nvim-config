@@ -22,10 +22,6 @@ set smartindent
 set cindent
 filetype plugin indent on
 
-"Fold
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set foldminlines=100
 set listchars=tab:\¦\ 		" Tab charactor
 set list
 
@@ -71,6 +67,7 @@ Plug 'nvim-lualine/lualine.nvim'
 
 " Code intellisense
 Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'hrsh7th/cmp-nvim-lsp'						" Auto Complete
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -85,6 +82,7 @@ Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
 
 " . command
 Plug 'tpope/vim-repeat'
+
 Plug 'tpope/vim-surround'
 
 "Snippet 
@@ -118,6 +116,29 @@ let g:nvim_tree_show_icons = {
     \ 'files': 1,
     \ 'folder_arrows': 1,
     \}
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
 highlight NvimTreeFolderIcon guibg=blue
 
 " Set theme 

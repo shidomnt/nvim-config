@@ -74,7 +74,6 @@ tnoremap <silent> 	<leader>tt 		<C-\><C-n>:FloatermToggle<CR>
 
 nnoremap <F2> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
 
 " Vim Spector
 nnoremap 	<Leader>dl :call vimspector#Launch()<CR>
