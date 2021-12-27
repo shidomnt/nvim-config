@@ -44,65 +44,14 @@ set splitright
 set cursorline 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin list
-" (used for Vim-plug - https://github.com/junegunn/vim-plug)
+" => Plugins 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin(stdpath('config').'/plugged')
-" Theme
-Plug 'joshdick/onedark.vim', 					" Dark theme
+lua require('plugins')
 
-" File browser
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
-
-" File System
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" Terminal
-Plug 'voldikss/vim-floaterm'
-
-" Status bar
-Plug 'nvim-lualine/lualine.nvim'
-
-" Code intellisense
-Plug 'neovim/nvim-lspconfig' 					" Language Server Protocol
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'hrsh7th/cmp-nvim-lsp'						" Auto Complete
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'		"ultisnips for cmp"
-
-Plug 'windwp/nvim-autopairs'            " Auto pairs
-Plug 'preservim/nerdcommenter' 					" Comment code 
-
-Plug 'windwp/nvim-ts-autotag'						" Autoclose and autorename html tag
-
-" . command
-Plug 'tpope/vim-repeat'
-
-Plug 'tpope/vim-surround'
-
-"Snippet 
-Plug 'SirVer/ultisnips'							"ultisnips
-Plug 'epilande/vim-react-snippets'
-
-" Code syntax highlight
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Debugging
-Plug 'puremourning/vimspector' 					" Vimspector
-
-" Source code version control 
-Plug 'tpope/vim-fugitive' 						" Git
-Plug 'rbong/vim-flog'
-
-" Auto-reloading a file in VIM as soon as it changes on disk
-Plug 'djoshea/vim-autoread'
-
-call plug#end()
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setting
@@ -111,34 +60,34 @@ call plug#end()
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_git_hl = 1
 let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \}
+      \ 'git': 1,
+      \ 'folders': 1,
+      \ 'files': 1,
+      \ 'folder_arrows': 1,
+      \}
 let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
+      \ 'default': '',
+      \ 'symlink': '',
+      \ 'git': {
+        \   'unstaged': "✗",
+        \   'staged': "✓",
+        \   'unmerged': "",
+        \   'renamed': "➜",
+        \   'untracked': "★",
+        \   'deleted': "",
+        \   'ignored': "◌"
+        \   },
+        \ 'folder': {
+          \   'arrow_open': "",
+          \   'arrow_closed': "",
+          \   'default': "",
+          \   'open': "",
+          \   'empty': "",
+          \   'empty_open': "",
+          \   'symlink': "",
+          \   'symlink_open': "",
+          \   }
+          \ }
 highlight NvimTreeFolderIcon guibg=blue
 
 " Set theme 
@@ -158,23 +107,20 @@ endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Settings for Windows
-
 if has('win32')
-" Enable copying from vim to clipboard
-	set clipboard=unnamed  
+  " Enable copying from vim to clipboard
+  set clipboard=unnamed  
   language en
   let g:python3_host_prog = 'C:/Python310/python'
   let g:python_host_prog = 'C:/Python27/python'
 else
-	set clipboard=unnamedplus
+  set clipboard=unnamedplus
 endif
 
 " Other setting
 for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
-	execute 'source' setting_file
+  execute 'source' setting_file
 endfor
 
-"Lua config
+"Other Lua config
 lua require('config')
-
-
