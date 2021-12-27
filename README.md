@@ -2,11 +2,7 @@
 
 [Note]
 - Can run on both Window and Linux
-- Run these commands after pulling this resource
-:PackerCompile
-:PackerClean
-:PackerInstall
-:PackerUpdate
+- Using packer to manage plugins
 
 [Requirement]
 - NodeJS
