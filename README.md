@@ -2,7 +2,11 @@
 
 [Note]
 - Can run on both Window and Linux
-- Run command :PlugInstall after pulling this resource
+- Run these commands after pulling this resource
+:PackerCompile
+:PackerClean
+:PackerInstall
+:PackerUpdate
 
 [Requirement]
 - NodeJS
