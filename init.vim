@@ -4,45 +4,8 @@
 " \/   |_|  \__,_|_| |_| \/ /_/ \__,_|
 "                                    
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
-" set mouse=a 				" Enable mouse
-set tabstop=2 				" 
-set expandtab
-set shiftwidth=2 			" 
-set shiftround
-
-set autowrite     " Automatically :write before running commands
-
-"indent
-set autoindent
-set smartindent
-set cindent
-filetype plugin indent on
-
-set listchars=tab:\¦\ 		" Tab charactor
-set list
-
-"Number
-set number 					" Show line number
-set relativenumber
-
-set ignorecase 				" Enable case-sensitive 
-
-" Disable backup
-set nobackup
-set nowb
-set noswapfile
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Enable cursor line position tracking:
-set cursorline 
-
+set listchars=tab:\¦\
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -59,47 +22,7 @@ augroup end
 " Nvim tree
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_git_hl = 1
-let g:nvim_tree_show_icons = {
-      \ 'git': 1,
-      \ 'folders': 1,
-      \ 'files': 1,
-      \ 'folder_arrows': 1,
-      \}
-let g:nvim_tree_icons = {
-      \ 'default': '',
-      \ 'symlink': '',
-      \ 'git': {
-        \   'unstaged': "✗",
-        \   'staged': "✓",
-        \   'unmerged': "",
-        \   'renamed': "➜",
-        \   'untracked': "★",
-        \   'deleted': "",
-        \   'ignored': "◌"
-        \   },
-        \ 'folder': {
-          \   'arrow_open': "",
-          \   'arrow_closed': "",
-          \   'default': "",
-          \   'open': "",
-          \   'empty': "",
-          \   'empty_open': "",
-          \   'symlink': "",
-          \   'symlink_open': "",
-          \   }
-          \ }
 highlight NvimTreeFolderIcon guibg=blue
-
-" Set theme 
-colorscheme onedark
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

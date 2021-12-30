@@ -25,7 +25,8 @@ use {
 }
 --
 -- -- Terminal
-use 'voldikss/vim-floaterm'
+--use 'voldikss/vim-floaterm'
+use {"akinsho/toggleterm.nvim"}
 --
 -- -- Status bar
 use {
@@ -42,6 +43,10 @@ use 'hrsh7th/cmp-path'
 use 'hrsh7th/cmp-cmdline'
 use 'hrsh7th/nvim-cmp'
 use 'quangnguyen30192/cmp-nvim-ultisnips'		--ultisnips for cmp--
+use {
+  'ray-x/lsp_signature.nvim',
+}
+use 'onsails/lspkind-nvim'
 --
 use 'windwp/nvim-autopairs'            -- Auto pairs
 use 'preservim/nerdcommenter' 					-- Comment code
@@ -54,7 +59,17 @@ use 'tpope/vim-repeat'
 use 'tpope/vim-surround'
 --
 -- --Snippet
-use 'SirVer/ultisnips'							--ultisnips
+use {
+    'SirVer/ultisnips',
+    requires = {{'honza/vim-snippets', rtp = '.'}},
+    config = function()
+      vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+      vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+      vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+      vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+      vim.g.UltiSnipsRemoveSelectModeMappings = 0
+    end
+}							--ultisnips
 use 'epilande/vim-react-snippets'
 --
 -- -- Code syntax highlight
