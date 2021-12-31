@@ -23,6 +23,8 @@ local options = {
   splitbelow= true,
   splitright= true,
   cursorline = true,
+  scrolloff = 8,
+  sidescrolloff = 8,
 }
 
 for k, v in pairs(options) do

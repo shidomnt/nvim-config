@@ -1,5 +1,5 @@
 local fn = vim.fn
--- Automatically install packer
+-- -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({
@@ -14,7 +14,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
     autocmd!
@@ -26,32 +26,37 @@ return require('packer').startup(function(use)
 use 'wbthomason/packer.nvim'
 
 -- -- Theme
-use 'joshdick/onedark.vim' 					-- Dark theme
---
+use 'joshdick/onedark.vim'
+
 -- -- File browser
 use {
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
+    config = function()
+      vim.g.nvim_tree_highlight_opened_files = 1
+      vim.g.nvim_tree_git_hl = 1
+      vim.highlight.NvimTreeFolderIcon = 'guibg=blue'  --highlight NvimTreeFolderIcon guibg=blue
+    end
 }
---
+
 -- -- File System
 use {
   'nvim-telescope/telescope.nvim',
   requires = { {'nvim-lua/plenary.nvim'} }
 }
 use 'ahmedkhalf/project.nvim'
---
+
 -- -- Terminal
 use {"akinsho/toggleterm.nvim"}
---
+
 -- -- Status bar
 use {
   'nvim-lualine/lualine.nvim',
   requires = {'kyazdani42/nvim-web-devicons', opt = true}
 }
---
+
 -- -- Code intellisense
 use 'neovim/nvim-lspconfig' 					-- Language Server Protocol
 use 'williamboman/nvim-lsp-installer'
@@ -63,19 +68,16 @@ use 'hrsh7th/nvim-cmp'
 use 'quangnguyen30192/cmp-nvim-ultisnips'		--ultisnips for cmp--
 use 'ray-x/lsp_signature.nvim'
 use 'onsails/lspkind-nvim'
---
 use 'windwp/nvim-autopairs'            -- Auto pairs
--- use 'preservim/nerdcommenter' 					-- Comment code
 use 'numToStr/Comment.nvim'
 use 'JoosepAlviste/nvim-ts-context-commentstring'
---
 use 'windwp/nvim-ts-autotag'						-- Autoclose and autorename html tag
---
+
 -- -- . command
 use 'tpope/vim-repeat'
---
+
 use 'tpope/vim-surround'
---
+
 -- --Snippet
 use {
     'SirVer/ultisnips',
@@ -87,22 +89,21 @@ use {
       vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
       vim.g.UltiSnipsRemoveSelectModeMappings = 0
     end
-}							--ultisnips
-use 'epilande/vim-react-snippets'
---
+}
+
 -- -- Code syntax highlight
 use {
   'nvim-treesitter/nvim-treesitter',
   run = ":TSUpdate",
   }
---
+
 -- -- Debugging
 use 'puremourning/vimspector' 					-- Vimspector
---
+
 -- -- Source code version control
 use 'tpope/vim-fugitive' 						-- Git
 use 'rbong/vim-flog'
---
+
 -- -- Auto-reloading a file in VIM as soon as it changes on disk
 use 'djoshea/vim-autoread'
 -- Is using a standard Neovim install, i.e. built from source or using a
