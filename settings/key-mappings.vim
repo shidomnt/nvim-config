@@ -58,20 +58,7 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap   <silent>   <leader>to    :FloatermNew<CR>
 tnoremap   <silent>   <leader>to    <C-\><C-n>:FloatermNew<CR>
 
-" Kill current terminal 
-nnoremap <silent> 	<leader>tk 		:FloatermKill<CR>:FloatermPrev<CR>
-tnoremap <silent> 	<leader>tk 		<C-\><C-n>:FloatermKill<CR>:FloatermPrev<CR>
-
-" Navigation next and previous terminal 
-nnoremap <silent> 	<leader>tn 		:FloatermNext<CR>
-tnoremap <silent> 	<leader>tn 		<C-\><C-n>:FloatermNext<CR>
-nnoremap <silent> 	<leader>tp 		:FloatermPrev<CR>
-tnoremap <silent> 	<leader>tp 		<C-\><C-n>:FloatermPrev<CR>
-
-" Toggle terminal
-nnoremap <silent> 	<leader>tt 		:FloatermToggle<CR>
-tnoremap <silent> 	<leader>tt 		<C-\><C-n>:FloatermToggle<CR>
-
+" Nvim tree
 nnoremap <F2> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 

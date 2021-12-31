@@ -11,11 +11,6 @@ set listchars=tab:\¦\
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua require('plugins')
 
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -25,10 +20,6 @@ let g:nvim_tree_git_hl = 1
 highlight NvimTreeFolderIcon guibg=blue
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Disable automatic comment in newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 "Settings for Windows
 if has('win32')
   " Enable copying from vim to clipboard

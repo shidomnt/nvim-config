@@ -30,10 +30,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
--- Lsp signature config 
+-- Lsp signature config
   local cfg = {
     hint_enable = false,
-    max_width = 80, 
+    max_width = 80,
     transparency = 50,
     handler_opts = {
       border = "rounded"   -- double, rounded, single, shadow, none
@@ -77,7 +77,7 @@ lsp_installer.on_server_ready(function(server)
     handlers = handlers,
   }
   if server.name == "html" or server.name == "emmet_ls" then
-    opts.filetypes = { "html", "handlebars" }  
+    opts.filetypes = { "html", "handlebars" }
   end
   if server.name == "sumneko_lua" then
     opts.settings = {
@@ -110,7 +110,7 @@ end
 
 local config = {
   -- disable virtual text
-  virtual_text = true,
+  virtual_text = false,
   -- show signs
   signs = {
     active = signs,
