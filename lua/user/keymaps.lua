@@ -29,7 +29,7 @@ keymap("n", "tp", ":tabnext<CR>", opts)
 keymap("n", "<Leader>g++", ":!g++ %:t -g -o %:r<CR>", opts)
 
 -- Remove highlight
-keymap("n", "<C-h", ":nohl<CR>", opts)
+keymap("n", "<C-h>", ":nohl<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff",":Telescope find_files<CR>", opts)
