@@ -18,6 +18,7 @@ local options = {
   number= true,
   relativenumber= true,
   ignorecase= true,
+  termguicolors = true,
   backup = false,
   swapfile = false,
   splitbelow= true,

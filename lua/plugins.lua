@@ -76,7 +76,22 @@ use 'windwp/nvim-ts-autotag'						-- Autoclose and autorename html tag
 -- -- . command
 use 'tpope/vim-repeat'
 
-use 'tpope/vim-surround'
+use {
+  "blackCauldron7/surround.nvim",
+  config = function()
+    require"surround".setup {mappings_style = "surround"}
+  end
+}
+
+-- -- Indent
+use {
+  "lukas-reineke/indent-blankline.nvim",
+  config = function()
+    vim.g.indent_blankline_filetype_exclude = {'alpha'}
+    vim.g.indent_blankline_buftype_exclude = {'terminal', 'nvimtree'}
+    vim.g.indent_blankline_bufname_exclude = {'NvimTree'}
+  end
+  }
 
 -- --Snippet
 use {
@@ -110,6 +125,9 @@ use 'djoshea/vim-autoread'
 -- provided appimage.
 use 'lewis6991/impatient.nvim'
 use 'goolord/alpha-nvim'
+
+-- Color highlighter for html/css/js
+use 'norcalli/nvim-colorizer.lua'
 
 if Packer_bootstrap then
     require('packer').sync()

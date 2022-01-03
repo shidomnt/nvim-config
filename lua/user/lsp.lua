@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
   local cfg = {
     hint_enable = false,
     max_width = 80,
-    transparency = 50,
+    transparency = nil,
     handler_opts = {
       border = "rounded"   -- double, rounded, single, shadow, none
     },
