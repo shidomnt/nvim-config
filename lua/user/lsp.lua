@@ -34,13 +34,12 @@ local on_attach = function(client, bufnr)
   local cfg = {
     hint_enable = false,
     max_width = 80,
-    transparency = nil,
     handler_opts = {
       border = "rounded"   -- double, rounded, single, shadow, none
     },
     toggle_key = "<M-x>",
   }
-  require "lsp_signature".on_attach(cfg, bufnr)
+  require'lsp_signature'.on_attach(cfg, bufnr)
 end
 
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]

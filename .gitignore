@@ -24,5 +24,10 @@ tags
 [._]*.un~
 #plugin folder
 plugin
+#log file
+log.txt
+profile.txt
+#debugger
+debugger
 
 # End of https://www.toptal.com/developers/gitignore/api/vim

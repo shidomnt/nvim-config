@@ -7,7 +7,7 @@ require("toggleterm").setup{
     end
   end,
   open_mapping = [[<c-\>]],
-  direction = 'horizontal',
+  direction = 'float',
 }
 
 function _G.set_terminal_keymaps()

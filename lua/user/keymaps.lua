@@ -41,15 +41,12 @@ keymap("n", "<F2>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 
 -- Vim spector
-keymap("n", "<Leader>dl", ":call vimspector#Launch()<CR>", opts)
-keymap("n", "<Leader>ds", ":call vimspector#Reset()<CR>", opts)
-keymap("n", "<Leader>dc", ":call vimspector#Continue()<CR>", opts)
-keymap("n", "<Leader>dt", ":call vimspector#ToggleBreakpoint()<CR>", opts)
-keymap("n", "<Leader>dT", ":call vimspector#ClearBreakpoints()<CR>", opts)
-keymap("n", "<Leader>de", ":call vimspector#StepOut()<CR>", opts)
-keymap("n", "<Leader>di", ":call vimspector#StepInto()<CR>", opts)
-keymap("n", "<Leader>do", ":call vimspector#StepOver()<CR>", opts)
-keymap("n", "<Leader>dr", "<Plug>VimspectorRestart", opts)
+keymap("n", "<Leader>ds", ":lua require'dap'.terminate()<CR>", opts)
+keymap("n", "<Leader>dc", ":lua require'dap'.continue()<CR>", opts)
+keymap("n", "<Leader>dt", ":lua require'dap'.toggle_breakpoint()<CR>", opts)
+keymap("n", "<Leader>de", ":lua require'dap'.step_out()<CR>", opts)
+keymap("n", "<Leader>di", ":lua require'dap'.step_into()<CR>", opts)
+keymap("n", "<Leader>do", ":lua require'dap'.step_over()<CR>", opts)
 
 -- Not auto close window when wipe a buffer
 keymap("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)

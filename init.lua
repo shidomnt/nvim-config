@@ -5,5 +5,4 @@
   --	\__/_| |_|_|\__,_|\___/  \/    \/\_\ \/   \/      --
   --                                                    --
 -- https://github.com/shidomnt/nvim-config/tree/linux-config --
-require('plugins')
-require('config')
+require('init')
