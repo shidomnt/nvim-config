@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
 try
   colorscheme onedark
   if (empty($TMUX))
@@ -10,4 +10,4 @@ try
     endif
   endif
 endtry
-]]
+]])

@@ -32,13 +32,12 @@ keymap("n", "<Leader>g++", ":!g++ %:t -g -o %:r<CR>", opts)
 keymap("n", "<C-h>", ":nohl<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff",":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Nvim tree
 keymap("n", "<F2>", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
 
 -- Vim spector
 keymap("n", "<Leader>ds", ":lua require'dap'.terminate()<CR>", opts)

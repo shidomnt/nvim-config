@@ -1,6 +1,4 @@
 local dap = require("dap")
-vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
-
 dap.adapters.cppdbg = {
 	type = "executable",
 	command = vim.fn.stdpath("data") .. "/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7",
@@ -24,4 +22,3 @@ dap.configurations.cpp = {
 		},
 	},
 }
-dap.configurations.c = dap.configurations.cpp

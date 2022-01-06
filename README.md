@@ -2,13 +2,12 @@
 
 [Note]
 - Can run on both Window and Linux
-- Using packer to manage plugins
+- Using Packer to manage plugins
 
 [Requirement]
 - NodeJS
 - Python
 - Git
-- vim-plug
 - ripgrep
 - Gcc lastest (mingw)
 
@@ -18,4 +17,5 @@
 [Language parsers]
 - Install by :TSInstall <language_to_install>
 
-
+[Debugger Adapter]
+- Install by :DIInstall

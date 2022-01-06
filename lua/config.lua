@@ -1,7 +1,7 @@
-require('user')
+require("user")
 
 -- Settings for Windows
-vim.cmd [[
+vim.cmd([[
   if has('win32')
   " Enable copying from vim to clipboard
   set clipboard=unnamed  
@@ -11,4 +11,4 @@ vim.cmd [[
   else
   set clipboard=unnamedplus
   endif
-]]
+]])

@@ -32,12 +32,12 @@ return require("packer").startup(function(use)
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
 			vim.g.nvim_tree_highlight_opened_files = 1
 			vim.g.nvim_tree_git_hl = 1
-			vim.highlight.NvimTreeFolderIcon = "guibg=blue" --highlight NvimTreeFolderIcon guibg=blue
+			vim.highlight.NvimTreeFolderIcon = "guibg=blue"
 		end,
 	})
 
@@ -77,6 +77,7 @@ return require("packer").startup(function(use)
 	-- -- . command
 	use("tpope/vim-repeat")
 
+	-- -- surround
 	use({
 		"blackCauldron7/surround.nvim",
 		config = function()
@@ -94,7 +95,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- --Snippet
+	-- -- Snippet
 	use({
 		"SirVer/ultisnips",
 		requires = { { "honza/vim-snippets", rtp = "." } },
@@ -124,12 +125,14 @@ return require("packer").startup(function(use)
 
 	-- -- Auto-reloading a file in VIM as soon as it changes on disk
 	use("djoshea/vim-autoread")
-	-- Is using a standard Neovim install, i.e. built from source or using a
-	-- provided appimage.
+
+	-- -- Improve startup time
 	use("lewis6991/impatient.nvim")
+
+	-- -- Dashboard
 	use("goolord/alpha-nvim")
 
-	-- Color highlighter for html/css/js
+	-- -- Color highlighter for html/css/js
 	use("norcalli/nvim-colorizer.lua")
 
 	if Packer_bootstrap then
