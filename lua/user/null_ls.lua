@@ -8,7 +8,8 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--trailing-comma all" } }),
+		formatting.prettier.with({ extra_args = { "--single-quote", "--trailing-comma all" } }),
 		formatting.stylua,
+		formatting.clang_format,
 	},
 })

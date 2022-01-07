@@ -22,3 +22,5 @@ dap.configurations.cpp = {
 		},
 	},
 }
+
+dap.configurations.c = dap.configurations.cpp

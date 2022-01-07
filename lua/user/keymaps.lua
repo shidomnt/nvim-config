@@ -15,18 +15,15 @@ local keymap = vim.api.nvim_set_keymap
 -- Normal --
 
 -- Resize pane
-keymap("n", "<M-Up>", ":resize -2<CR>", opts)
-keymap("n", "<M-Down>", ":resize +2<CR>", opts)
-keymap("n", "<M-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<M-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<M-Up>", ":resize -1<CR>", opts)
+keymap("n", "<M-Down>", ":resize +1<CR>", opts)
+keymap("n", "<M-Left>", ":vertical resize -1<CR>", opts)
+keymap("n", "<M-Right>", ":vertical resize +1<CR>", opts)
 
 -- Tab
 keymap("n", "tt", ":tab split<CR>", opts)
 keymap("n", "tw", ":tabclose<CR>", opts)
 keymap("n", "tp", ":tabnext<CR>", opts)
-
--- Complier C/C++
-keymap("n", "<Leader>g++", ":!g++ %:t -g -o %:r<CR>", opts)
 
 -- Remove highlight
 keymap("n", "<C-h>", ":nohl<CR>", opts)
@@ -39,7 +36,7 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 -- Nvim tree
 keymap("n", "<F2>", ":NvimTreeToggle<CR>", opts)
 
--- Vim spector
+-- Nvim DAP
 keymap("n", "<Leader>ds", ":lua require'dap'.terminate()<CR>", opts)
 keymap("n", "<Leader>dc", ":lua require'dap'.continue()<CR>", opts)
 keymap("n", "<Leader>dt", ":lua require'dap'.toggle_breakpoint()<CR>", opts)

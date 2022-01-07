@@ -26,6 +26,8 @@ local options = {
 	cursorline = true,
 	scrolloff = 8,
 	sidescrolloff = 8,
+	numberwidth = 2, -- set number column width to 2 {default 4}
+	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 }
 
 for k, v in pairs(options) do
@@ -35,4 +37,4 @@ end
 vim.cmd("set wildignore+=*/node_modules/*")
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]])
+vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])

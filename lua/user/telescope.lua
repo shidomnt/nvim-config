@@ -9,5 +9,12 @@ require("telescope").setup({
 			},
 		},
 	},
-	pickers = {},
+	pickers = {
+		find_files = {
+			theme = "dropdown",
+		},
+		live_grep = {
+			theme = "dropdown",
+		},
+	},
 })

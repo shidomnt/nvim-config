@@ -14,11 +14,11 @@ require("dapui").setup({
 			-- Provide as ID strings or tables with "id" and "size" keys
 			{
 				id = "scopes",
-				size = 0.3, -- Can be float or integer > 1
+				size = 0.4, -- Can be float or integer > 1
 			},
+			{ id = "watches", size = 0.4 },
 			{ id = "stacks", size = 0.3 },
-			{ id = "watches", size = 0.3 },
-			{ id = "breakpoints", size = 0.1 },
+			-- { id = "breakpoints", size = 0.1 },
 		},
 		size = 50,
 		position = "left", -- Can be "left", "right", "top", "bottom"
