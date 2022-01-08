@@ -129,9 +129,6 @@ let g:nvim_tree_show_icons = {
     \}
 highlight NvimTreeFolderIcon guibg=blue
 
-"Nvim cmp
-set completeopt=menu,menuone,noselect
-
 " Set theme 
 colorscheme onedark
 if (empty($TMUX))
