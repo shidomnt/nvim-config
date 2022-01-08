@@ -8,10 +8,9 @@ local diff = {
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 }
 
-local location = {
-	"location",
-	padding = 1,
-}
+local location = function ()
+  return ":%2l/%L|:%-2v"
+end
 
 local tab = {
 	"tabs",
@@ -59,8 +58,8 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch", diff, "diagnostics" },
 		lualine_c = { filename },
-		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
+		lualine_x = { "encoding", "fileformat" },
+		lualine_y = { "filetype" },
 		lualine_z = { location },
 	},
 	tabline = {

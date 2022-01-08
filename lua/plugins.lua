@@ -25,6 +25,8 @@ vim.cmd([[
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
+	use("nvim-lua/plenary.nvim")
+
 	-- -- Theme
 	use("joshdick/onedark.vim")
 
@@ -42,10 +44,7 @@ return require("packer").startup(function(use)
 	})
 
 	-- -- File System
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+	use("nvim-telescope/telescope.nvim")
 	use("ahmedkhalf/project.nvim")
 
 	-- -- Terminal
