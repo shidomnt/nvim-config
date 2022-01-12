@@ -119,7 +119,6 @@ return require("packer").startup(function(use)
 
 	-- -- Debugging
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use("Pocco81/DAPInstall.nvim")
 	use("theHamsta/nvim-dap-virtual-text")
 
 	-- -- Source code version control

@@ -28,6 +28,7 @@ local options = {
 	sidescrolloff = 8,
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+  shell = "zsh",
 }
 
 for k, v in pairs(options) do
