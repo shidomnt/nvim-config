@@ -50,7 +50,7 @@ return require("packer").startup(function(use)
 	use({
 		"SmiteshP/nvim-gps",
 		config = function()
-      require("nvim-gps").setup()
+			require("nvim-gps").setup()
 		end,
 	})
 
@@ -70,7 +70,7 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag") -- Autoclose and autorename html tag
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- -- . command
 	use("tpope/vim-repeat")
@@ -90,13 +90,6 @@ return require("packer").startup(function(use)
 	use({
 		"SirVer/ultisnips",
 		requires = { { "honza/vim-snippets", rtp = "." } },
-		config = function()
-			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-			vim.g.UltiSnipsRemoveSelectModeMappings = 0
-		end,
 	})
 
 	-- -- Code syntax highlight
@@ -104,7 +97,7 @@ return require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-  use("p00f/nvim-ts-rainbow")
+	use("p00f/nvim-ts-rainbow")
 
 	-- -- Debugging
 	use("mfussenegger/nvim-dap")
@@ -125,7 +118,12 @@ return require("packer").startup(function(use)
 	use("djoshea/vim-autoread")
 
 	-- -- Improve startup time
-	use("lewis6991/impatient.nvim")
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient").enable_profile()
+		end,
+	})
 
 	-- -- Dashboard
 	use("goolord/alpha-nvim")

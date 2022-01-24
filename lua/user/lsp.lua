@@ -1,3 +1,9 @@
+vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
+vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
+vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
+vim.g.UltiSnipsRemoveSelectModeMappings = 0
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
