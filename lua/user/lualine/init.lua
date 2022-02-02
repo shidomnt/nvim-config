@@ -9,7 +9,7 @@ local diff = {
 }
 
 local location = function()
-	return ":%2l/%L|:%-2v"
+	return "%2l/%L:%-2v"
 end
 
 local tab = {

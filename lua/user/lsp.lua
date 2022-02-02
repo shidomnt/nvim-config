@@ -41,15 +41,15 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	-- Lsp signature config
-	local cfg = {
-		hint_enable = false,
-		max_width = 80,
-		handler_opts = {
-			border = "rounded", -- double, rounded, single, shadow, none
-		},
-		toggle_key = "<M-x>",
-	}
-	require("lsp_signature").on_attach(cfg, bufnr)
+	-- local cfg = {
+	-- 	hint_enable = false,
+	-- 	max_width = 80,
+	-- 	handler_opts = {
+	-- 		border = "rounded", -- double, rounded, single, shadow, none
+	-- 	},
+	-- 	toggle_key = "<M-x>",
+	-- }
+	-- require("lsp_signature").on_attach(cfg, bufnr)
 end
 
 vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
