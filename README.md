@@ -19,3 +19,16 @@
 
 [Debugger Adapter]
 - Install by :DIInstall
+
+[Python 3 Provider]
+pip3 install pynvim
+
+[Python 2 Provider]
+pip install pynvim
+
+[Ruby Provider]
+gem update --system
+gem install neovim
+
+[Nodejs Provider]
+npm install -g neovim
