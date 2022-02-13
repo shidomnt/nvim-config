@@ -1,4 +1,4 @@
-require('user.lualine.tabline')
+require("user.lualine.tabline")
 -- Custom Extensions
 local dapui = require("user.lualine.extensions.dapui")
 
@@ -8,8 +8,8 @@ local diff = {
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
 }
 
-local location = function ()
-  return ":%2l/%L|:%-2v"
+local location = function()
+	return "%2l/%L:%-2v"
 end
 
 local tab = {
@@ -57,7 +57,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", diff, "diagnostics" },
-		lualine_c = { filename },
+		lualine_c = { filename, { require("nvim-gps").get_location, cond = require("nvim-gps").is_available } },
 		lualine_x = { "encoding", "fileformat" },
 		lualine_y = { "filetype" },
 		lualine_z = { location },

@@ -112,7 +112,7 @@ cmp.setup({
 		}),
 	},
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "abbr", "kind", "menu" },
 		format = lspkind.cmp_format({
 			with_text = false,
 			menu = {

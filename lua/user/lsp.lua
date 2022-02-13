@@ -1,3 +1,9 @@
+vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
+vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
+vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
+vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
+vim.g.UltiSnipsRemoveSelectModeMappings = 0
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -35,15 +41,15 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	-- Lsp signature config
-	local cfg = {
-		hint_enable = false,
-		max_width = 80,
-		handler_opts = {
-			border = "rounded", -- double, rounded, single, shadow, none
-		},
-		toggle_key = "<M-x>",
-	}
-	require("lsp_signature").on_attach(cfg, bufnr)
+	-- local cfg = {
+	-- 	hint_enable = false,
+	-- 	max_width = 80,
+	-- 	handler_opts = {
+	-- 		border = "rounded", -- double, rounded, single, shadow, none
+	-- 	},
+	-- 	toggle_key = "<M-x>",
+	-- }
+	-- require("lsp_signature").on_attach(cfg, bufnr)
 end
 
 vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])

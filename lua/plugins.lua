@@ -23,6 +23,7 @@ vim.cmd([[
 ]])
 
 return require("packer").startup(function(use)
+	-- -- Manage itself
 	use("wbthomason/packer.nvim")
 
 	use("nvim-lua/plenary.nvim")
@@ -30,18 +31,11 @@ return require("packer").startup(function(use)
 	-- -- Theme
 	use("joshdick/onedark.vim")
 
+	-- -- Icons
+	use("kyazdani42/nvim-web-devicons")
+
 	-- -- File browser
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-		},
-		config = function()
-			vim.g.nvim_tree_highlight_opened_files = 1
-			vim.g.nvim_tree_git_hl = 1
-			vim.highlight.NvimTreeFolderIcon = "guibg=blue"
-		end,
-	})
+	use("kyazdani42/nvim-tree.lua")
 
 	-- -- File System
 	use("nvim-telescope/telescope.nvim")
@@ -51,13 +45,13 @@ return require("packer").startup(function(use)
 	use({ "akinsho/toggleterm.nvim" })
 
 	-- -- Status bar
+	use("nvim-lualine/lualine.nvim")
+	use("kdheepak/tabline.nvim")
 	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({
-		"kdheepak/tabline.nvim",
-		requires = { "hoob3rt/lualine.nvim", "kyazdani42/nvim-web-devicons" },
+		"SmiteshP/nvim-gps",
+		config = function()
+			require("nvim-gps").setup()
+		end,
 	})
 
 	-- -- Code intellisense
@@ -76,6 +70,7 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag") -- Autoclose and autorename html tag
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- -- . command
 	use("tpope/vim-repeat")
@@ -89,26 +84,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- -- Indent
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			vim.g.indent_blankline_filetype_exclude = { "alpha" }
-			vim.g.indent_blankline_buftype_exclude = { "terminal", "help" }
-			vim.g.indent_blankline_bufname_exclude = { "NvimTree" }
-		end,
-	})
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- -- Snippet
 	use({
 		"SirVer/ultisnips",
 		requires = { { "honza/vim-snippets", rtp = "." } },
-		config = function()
-			vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-			vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-			vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-			vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-			vim.g.UltiSnipsRemoveSelectModeMappings = 0
-		end,
 	})
 
 	-- -- Code syntax highlight
@@ -116,21 +97,33 @@ return require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("p00f/nvim-ts-rainbow")
 
 	-- -- Debugging
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-	use("Pocco81/DAPInstall.nvim")
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 
 	-- -- Source code version control
 	use("tpope/vim-fugitive") -- Git
 	use("rbong/vim-flog")
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 
 	-- -- Auto-reloading a file in VIM as soon as it changes on disk
 	use("djoshea/vim-autoread")
 
 	-- -- Improve startup time
-	use("lewis6991/impatient.nvim")
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient").enable_profile()
+		end,
+	})
 
 	-- -- Dashboard
 	use("goolord/alpha-nvim")

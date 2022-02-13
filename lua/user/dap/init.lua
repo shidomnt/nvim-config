@@ -3,7 +3,6 @@ vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", n
 
 -- Extensions
 require("user.dap.dapui")
-require("user.dap.dap_install")
 require("user.dap.dap_virtual_text")
 
 -- Adapter List
