@@ -76,12 +76,13 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 
 	-- -- surround
-	use({
-		"blackCauldron7/surround.nvim",
-		config = function()
-			require("surround").setup({ mappings_style = "surround" })
-		end,
-	})
+  use { 'tpope/vim-surround' }
+	-- use({
+	-- 	"blackCauldron7/surround.nvim",
+	-- 	config = function()
+	-- 		require("surround").setup({ mappings_style = "surround" })
+	-- 	end,
+	-- })
 
 	-- -- Indent
 	use("lukas-reineke/indent-blankline.nvim")
