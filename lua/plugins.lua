@@ -80,13 +80,9 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- -- Snippet
-	-- use({
-	-- 	"SirVer/ultisnips",
-	-- 	requires = { { "honza/vim-snippets", rtp = "." } },
-	-- })
-	-- use("quangnguyen30192/cmp-nvim-ultisnips") --ultisnips for cmp--
-  use("L3MON4D3/LuaSnip");
-  use("saadparwaiz1/cmp_luasnip")
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+  use("rafamadriz/friendly-snippets")
 
 	-- -- Code syntax highlight
 	use({
