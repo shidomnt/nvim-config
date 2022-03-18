@@ -1,7 +1,7 @@
 require("user")
 
 vim.cmd([[
-  au! BufRead,BufNewFile *.json set filetype=jsonc`
+  au! BufRead,BufNewFile *.json set filetype=jsonc
   if has('win32')
   " Enable copying from vim to clipboard
   set clipboard=unnamed  

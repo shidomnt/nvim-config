@@ -76,7 +76,7 @@ return require("packer").startup(function(use)
 	use("tpope/vim-repeat")
 
 	-- -- surround
-  use { 'tpope/vim-surround' }
+	use({ "tpope/vim-surround" })
 	-- use({
 	-- 	"blackCauldron7/surround.nvim",
 	-- 	config = function()
