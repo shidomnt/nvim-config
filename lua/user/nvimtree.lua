@@ -25,10 +25,28 @@ require("nvim-tree").setup({
 			error = "",
 		},
 	},
-  git = {
-    enable = true,
-    ignore = false,
-    timeout = 500,
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
+  },
+  actions = {
+    change_dir = {
+      enable = true,
+      global = false,
+    },
+    open_file = {
+      quit_on_open = false,
+      resize_window = true,
+      window_picker = {
+        enable = true,
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        exclude = {
+          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+          buftype = { "nofile", "terminal", "help" },
+        },
+      },
+    },
   },
 	view = {
 		auto_resize = true,

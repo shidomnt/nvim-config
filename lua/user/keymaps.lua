@@ -46,3 +46,6 @@ keymap("n", "<Leader>do", ":lua require'dap'.step_over()<CR>", opts)
 
 -- Not auto close window when wipe a buffer
 keymap("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>", opts)
+
+-- Refresh Nvim Tree
+keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", opts)
