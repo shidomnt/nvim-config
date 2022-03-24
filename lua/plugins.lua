@@ -1,4 +1,4 @@
-`local fn = vim.fn
+local fn = vim.fn
 -- -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -80,9 +80,18 @@ return require("packer").startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- -- Snippet
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
-  use("rafamadriz/friendly-snippets")
+	use("quangnguyen30192/cmp-nvim-ultisnips")
+	use({
+		"SirVer/ultisnips",
+		requires = { { "honza/vim-snippets", rtp = "." } },
+		config = function()      
+			vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
+			vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+			vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+			vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+			vim.g.UltiSnipsRemoveSelectModeMappings = 0
+		  end
+	})
 
 	-- -- Code syntax highlight
 	use({
