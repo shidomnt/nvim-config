@@ -1,9 +1,11 @@
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
@@ -124,12 +126,13 @@ cmp.setup({
 			},
 		}),
 	},
-	sources = cmp.config.sources({
+	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "ultisnips" }, -- For ultisnips users.
-	}, {
+	},
+	{
 		{ name = "buffer" },
-	}),
+	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
