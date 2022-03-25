@@ -62,7 +62,6 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/nvim-cmp")
-	use("quangnguyen30192/cmp-nvim-ultisnips") --ultisnips for cmp--
 	use("ray-x/lsp_signature.nvim")
 	use("onsails/lspkind-nvim")
 	use("windwp/nvim-autopairs") -- Auto pairs
@@ -70,27 +69,28 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag") -- Autoclose and autorename html tag
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 
 	-- -- . command
 	use("tpope/vim-repeat")
 
 	-- -- surround
-  use { 'tpope/vim-surround' }
-	-- use({
-	-- 	"blackCauldron7/surround.nvim",
-	-- 	config = function()
-	-- 		require("surround").setup({ mappings_style = "surround" })
-	-- 	end,
-	-- })
+	use({ "tpope/vim-surround" })
 
 	-- -- Indent
 	use("lukas-reineke/indent-blankline.nvim")
 
 	-- -- Snippet
+	use("quangnguyen30192/cmp-nvim-ultisnips")
 	use({
 		"SirVer/ultisnips",
 		requires = { { "honza/vim-snippets", rtp = "." } },
+		config = function()      
+			vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'      
+			vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+			vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+			vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+			vim.g.UltiSnipsRemoveSelectModeMappings = 0
+		  end
 	})
 
 	-- -- Code syntax highlight

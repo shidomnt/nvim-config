@@ -86,7 +86,7 @@ lsp_installer.on_server_ready(function(server)
 		handlers = handlers,
 	}
 	if server.name == "html" or server.name == "emmet_ls" then
-		opts.filetypes = { "html", "handlebars" }
+		opts.filetypes = { "html", "handlebars", "php" }
 	end
 	if server.name == "sumneko_lua" then
 		opts.settings = {
