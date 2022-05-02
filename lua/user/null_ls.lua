@@ -9,7 +9,7 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({ extra_args = { "--single-quote", "--trailing-comma all" } }),
-		formatting.stylua,
+		-- formatting.stylua,
 		formatting.clang_format,
 	},
 })

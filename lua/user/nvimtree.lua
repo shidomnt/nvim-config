@@ -25,6 +25,19 @@ require("nvim-tree").setup({
 			error = "",
 		},
 	},
+  renderer = {
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        none = "  ",
+      },
+    },
+    icons = {
+      webdev_colors = true,
+    },
+  },
 	git = {
 		enable = true,
 		ignore = false,
@@ -48,7 +61,4 @@ require("nvim-tree").setup({
       },
     },
   },
-	view = {
-		auto_resize = true,
-	},
 })

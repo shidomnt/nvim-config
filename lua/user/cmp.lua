@@ -8,11 +8,14 @@ end
 
 cmp.setup({
 	snippet = {
-		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
 	mapping = {
 		["<Tab>"] = cmp.mapping({
 			c = function()
@@ -122,7 +125,6 @@ cmp.setup({
 				nvim_lsp = "[LSP]",
 				ultisnips = "[Ultisnips]",
 				nvim_lua = "[Lua]",
-				latex_symbols = "[Latex]",
 			},
 		}),
 	},
@@ -136,9 +138,6 @@ cmp.setup({
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
-	},
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
 	experimental = {
 		ghost_text = false,
