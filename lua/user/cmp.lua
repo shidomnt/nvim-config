@@ -97,8 +97,8 @@ mapping = {
 cmp.setup.cmdline("/", {
 	completion = { autocomplete = false },
 	sources = {
-		-- { name = 'buffer' }
-		{ name = "buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
+		{ name = 'buffer' }
+		-- { name = "buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
 	},
 })
 
