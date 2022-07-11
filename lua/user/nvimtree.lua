@@ -1,14 +1,6 @@
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_git_hl = 1
 vim.highlight.NvimTreeFolderIcon = "guibg=blue"
-vim.g.nvim_tree_respect_buf_cwd = 1
-vim.g.nvim_tree_show_icons = {
-	git = 1,
-	folders = 1,
-	files = 1,
-	folder_arrows = 1,
-}
 require("nvim-tree").setup({
+  respect_buf_cwd = true,
 	disable_netrw = true,
 	update_cwd = true,
 	update_focused_file = {
@@ -26,6 +18,8 @@ require("nvim-tree").setup({
 		},
 	},
   renderer = {
+    highlight_opened_files = "all",
+    highlight_git = true,
     indent_markers = {
       enable = true,
       icons = {
@@ -36,6 +30,12 @@ require("nvim-tree").setup({
     },
     icons = {
       webdev_colors = true,
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      }
     },
   },
 	git = {
