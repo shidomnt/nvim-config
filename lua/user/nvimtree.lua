@@ -21,7 +21,7 @@ require("nvim-tree").setup({
     highlight_opened_files = "all",
     highlight_git = true,
     indent_markers = {
-      enable = true,
+      enable = false,
       icons = {
         corner = "└ ",
         edge = "│ ",
