@@ -1,0 +1,14 @@
+// {
+// 	"snip1": {
+// 		"prefix": "rfc",
+// 		"body": [
+//       "import React from 'react';",
+//       "",
+//       "const ${TM_FILENAME_BASE} = ($0) => {",
+//       "",
+//       "return <div>$1</div>;",
+//       "}",
+//       "export default ${TM_FILENAME_BASE}"
+// 		]
+// 	}
+// }

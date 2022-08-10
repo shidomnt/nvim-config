@@ -4,3 +4,5 @@ if not status_ok then
 end
 
 telescope.setup({})
+
+telescope.load_extension "file_browser"

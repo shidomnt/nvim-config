@@ -36,6 +36,7 @@ return require("packer").startup(function(use)
 
 	-- -- File browser
 	use("kyazdani42/nvim-tree.lua")
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
 	-- -- File System
 	use("nvim-telescope/telescope.nvim")

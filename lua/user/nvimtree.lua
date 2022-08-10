@@ -18,7 +18,7 @@ require("nvim-tree").setup({
 		},
 	},
   renderer = {
-    highlight_opened_files = "all",
+    highlight_opened_files = "icon",
     highlight_git = true,
     indent_markers = {
       enable = false,

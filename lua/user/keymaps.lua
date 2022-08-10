@@ -31,7 +31,7 @@ keymap("n", "<C-h>", ":nohl<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope file_browser<CR>", opts)
 
 -- Nvim tree
 keymap("n", "<F2>", ":NvimTreeToggle<CR>", opts)
