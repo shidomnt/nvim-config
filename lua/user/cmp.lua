@@ -12,19 +12,19 @@ require("luasnip.loaders.from_vscode").lazy_load()
 local luasnip = require('luasnip')
 
 cmp.setup({
-	snippet = {
-		expand = function(args)
-			-- vim.fn["UltiSnips#Anon"](args.body)
+  snippet = {
+    expand = function(args)
+      -- vim.fn["UltiSnips#Anon"](args.body)
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
+    end,
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-mapping = {
+  mapping = {
     ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -49,9 +49,9 @@ mapping = {
         fallback()
       end
     end, {
-      "i",
-      "s",
-    }),
+        "i",
+        "s",
+      }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -61,55 +61,55 @@ mapping = {
         fallback()
       end
     end, {
-      "i",
-      "s",
+        "i",
+        "s",
+      }),
+  },
+  formatting = {
+    fields = { "abbr", "kind", "menu" },
+    format = lspkind.cmp_format({
+      with_text = false,
+      menu = {
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        -- ultisnips = "[Ultisnips]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+      },
     }),
   },
-	formatting = {
-		fields = { "abbr", "kind", "menu" },
-		format = lspkind.cmp_format({
-			with_text = false,
-			menu = {
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				-- ultisnips = "[Ultisnips]",
-        luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
-			},
-		}),
-	},
-	sources = {
-		{ name = "nvim_lsp" },
-		-- { name = "ultisnips" }, -- For ultisnips users.
+  sources = {
+    { name = "nvim_lsp" },
+    -- { name = "ultisnips" }, -- For ultisnips users.
     { name = 'luasnip' }, -- For luasnip users.
-	},
-	{
-		{ name = "buffer" },
-	},
-	confirm_opts = {
-		behavior = cmp.ConfirmBehavior.Replace,
-		select = false,
-	},
-	experimental = {
-		ghost_text = false,
-		native_menu = false,
-	},
+  },
+  {
+    { name = "buffer" },
+  },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  experimental = {
+    ghost_text = false,
+    native_menu = false,
+  },
 })
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {
-	completion = { autocomplete = false },
-	sources = {
-		{ name = 'buffer' }
-		-- { name = "buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
-	},
+  completion = { autocomplete = false },
+  sources = {
+    { name = 'buffer' }
+    -- { name = "buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
+  },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
-	completion = { autocomplete = false },
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
+  completion = { autocomplete = false },
+  sources = cmp.config.sources({
+    { name = "path" },
+    }, {
+      { name = "cmdline" },
+  }),
 })

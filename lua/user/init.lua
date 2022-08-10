@@ -1,5 +1,7 @@
 require("user.options")
 require("user.colorscheme")
+require('user.lspsagarc')
+require('user.lspkindrc')
 require("user.cmp")
 require("user.lsp")
 require("user.treesitter")

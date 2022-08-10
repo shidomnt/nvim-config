@@ -70,6 +70,10 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("windwp/nvim-ts-autotag") -- Autoclose and autorename html tag
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main"
+  })
 
 	-- -- . command
 	use("tpope/vim-repeat")
