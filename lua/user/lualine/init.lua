@@ -1,6 +1,7 @@
 require("user.lualine.tabline")
 -- Custom Extensions
 local dapui = require("user.lualine.extensions.dapui")
+local navic = require("nvim-navic")
 
 local diff = {
 	"diff",
@@ -57,7 +58,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", diff, "diagnostics" },
-		lualine_c = { filename, { require("nvim-gps").get_location, cond = require("nvim-gps").is_available } },
+		lualine_c = { filename, { navic.get_location, cond = navic.is_available } },
 		lualine_x = { "encoding", "fileformat" },
 		lualine_y = { "filetype" },
 		lualine_z = { location },

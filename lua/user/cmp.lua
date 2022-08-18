@@ -49,9 +49,9 @@ cmp.setup({
         fallback()
       end
     end, {
-        "i",
-        "s",
-      }),
+      "i",
+      "s",
+    }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -61,18 +61,16 @@ cmp.setup({
         fallback()
       end
     end, {
-        "i",
-        "s",
-      }),
+      "i",
+      "s",
+    }),
   },
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = lspkind.cmp_format({
-      with_text = false,
       menu = {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
-        -- ultisnips = "[Ultisnips]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
       },
@@ -97,19 +95,18 @@ cmp.setup({
 })
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {
-  completion = { autocomplete = false },
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' }
-    -- { name = "buffer", opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
+    { name = 'buffer' },
   },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(":", {
-  completion = { autocomplete = false },
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = "path" },
-    }, {
-      { name = "cmdline" },
+  }, {
+    { name = "cmdline" },
   }),
 })

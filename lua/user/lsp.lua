@@ -4,6 +4,8 @@ vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
 vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
 vim.g.UltiSnipsRemoveSelectModeMappings = 0
 
+local navic = require("nvim-navic")
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -11,6 +13,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
+
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -31,35 +34,45 @@ end
 vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
 vim.cmd([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
 
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
+local opts = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}
+
+local luaLspOpts = opts
+luaLspOpts.settings = {
+  Lua = {
+    diagnostics = {
+      globals = { "vim", "luasnip" },
     },
-  }
-  if server.name == "html" or server.name == "emmet_ls" then
-    opts.filetypes = { "html", "handlebars", "php" }
-  end
-  if server.name == "sumneko_lua" then
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim", "luasnip" },
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.stdpath("config") .. "/lua"] = true,
-          },
-        },
+    workspace = {
+      library = {
+        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+        [vim.fn.stdpath("config") .. "/lua"] = true,
       },
-    }
-  end
-  server:setup(opts)
-end)
+    },
+  },
+}
+
+require('lspconfig')['tsserver'].setup({
+  on_attach = function (client, bufnr)
+    on_attach(client, bufnr)
+    navic.attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
+require('lspconfig')['cssls'].setup(opts)
+require('lspconfig')['emmet_ls'].setup(opts)
+require('lspconfig')['eslint'].setup(opts)
+require('lspconfig')['html'].setup(opts)
+require('lspconfig')['jsonls'].setup(opts)
+require('lspconfig')['sumneko_lua'].setup(luaLspOpts)
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },
