@@ -12,7 +12,7 @@ require("user.autopairs")
 require("user.toggleterm")
 require("user.alpha")
 require("user.comment")
-require("user.project")
+--[[ require("user.project") ]]
 require("user.keymaps")
 require("user.nvim-colorizer")
 require("user.indent_blankline")
