@@ -72,6 +72,7 @@ require('lspconfig')['emmet_ls'].setup(opts)
 require('lspconfig')['eslint'].setup(opts)
 require('lspconfig')['html'].setup(opts)
 require('lspconfig')['jsonls'].setup(opts)
+require('lspconfig')['csharp_ls'].setup(opts)
 require('lspconfig')['sumneko_lua'].setup(luaLspOpts)
 
 local signs = {
