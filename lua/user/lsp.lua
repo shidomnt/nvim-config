@@ -42,6 +42,16 @@ local opts = {
   },
 }
 
+local omnisharpOpts = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  cmd = { "dotnet", "/home/shido/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+  enable_import_completion = true,
+}
+
 local luaLspOpts = opts
 luaLspOpts.settings = {
   Lua = {
@@ -72,8 +82,9 @@ require('lspconfig')['emmet_ls'].setup(opts)
 require('lspconfig')['eslint'].setup(opts)
 require('lspconfig')['html'].setup(opts)
 require('lspconfig')['jsonls'].setup(opts)
-require('lspconfig')['csharp_ls'].setup(opts)
+require('lspconfig')['omnisharp'].setup(omnisharpOpts)
 require('lspconfig')['sumneko_lua'].setup(luaLspOpts)
+require('lspconfig')['clangd'].setup(opts)
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },

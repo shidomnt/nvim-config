@@ -10,6 +10,7 @@ null_ls.setup({
 	sources = {
 		formatting.prettier.with({ extra_args = { "--single-quote", "--trailing-comma all" } }),
 		-- formatting.stylua,
-		formatting.clang_format,
+		--[[ formatting.clang_format, ]]
+    formatting.csharpier
 	},
 })
