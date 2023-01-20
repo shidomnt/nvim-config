@@ -4,9 +4,23 @@ vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
 vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
 vim.g.UltiSnipsRemoveSelectModeMappings = 0
 
-local navic = require("nvim-navic")
+local status_navic_ok, navic = pcall(require, "nvim-navic")
+if not status_navic_ok then
+  return
+end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local status_cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_nvim_lsp_ok then
+  return
+end
+
+local status_ok, lspconfig = pcall(require, "lspconfig")
+if not status_ok then
+  return
+end
+
+
+local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -49,7 +63,8 @@ local omnisharpOpts = {
     debounce_text_changes = 150,
   },
   cmd = { "dotnet", "/home/shido/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
-  enable_import_completion = true,
+  enable_import_completion = false,
+  enable_editorconfig_support = true,
 }
 
 local luaLspOpts = opts
@@ -67,7 +82,7 @@ luaLspOpts.settings = {
   },
 }
 
-require('lspconfig')['tsserver'].setup({
+lspconfig['tsserver'].setup({
   on_attach = function (client, bufnr)
     on_attach(client, bufnr)
     navic.attach(client, bufnr)
@@ -77,14 +92,14 @@ require('lspconfig')['tsserver'].setup({
     debounce_text_changes = 150,
   },
 })
-require('lspconfig')['cssls'].setup(opts)
-require('lspconfig')['emmet_ls'].setup(opts)
-require('lspconfig')['eslint'].setup(opts)
-require('lspconfig')['html'].setup(opts)
-require('lspconfig')['jsonls'].setup(opts)
-require('lspconfig')['omnisharp'].setup(omnisharpOpts)
-require('lspconfig')['sumneko_lua'].setup(luaLspOpts)
-require('lspconfig')['clangd'].setup(opts)
+lspconfig['cssls'].setup(opts)
+lspconfig['emmet_ls'].setup(opts)
+lspconfig['eslint'].setup(opts)
+lspconfig['html'].setup(opts)
+lspconfig['jsonls'].setup(opts)
+lspconfig['omnisharp'].setup(omnisharpOpts)
+lspconfig['sumneko_lua'].setup(luaLspOpts)
+lspconfig['clangd'].setup(opts)
 
 local signs = {
   { name = "DiagnosticSignError", text = "" },

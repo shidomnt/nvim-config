@@ -1,6 +1,18 @@
 -- Setup nvim-cmp.
-local cmp = require("cmp")
-local lspkind = require("lspkind")
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+  return
+end
+
+local status_lspkind_ok, lspkind = pcall(require, "lspkind")
+if not status_lspkind_ok then
+  return
+end
+
+local status_luasnip_ok, luasnip = pcall(require, "luasnip")
+if not status_luasnip_ok then
+  return
+end
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -9,13 +21,11 @@ end
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-local luasnip = require('luasnip')
-
 cmp.setup({
   snippet = {
     expand = function(args)
       -- vim.fn["UltiSnips#Anon"](args.body)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   window = {

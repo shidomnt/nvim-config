@@ -104,9 +104,9 @@ return require("packer").startup(function(use)
   use("p00f/nvim-ts-rainbow")
 
   -- -- Debugging
-  use("mfussenegger/nvim-dap")
-  use("rcarriga/nvim-dap-ui")
-  use("theHamsta/nvim-dap-virtual-text")
+  --[[ use("mfussenegger/nvim-dap") ]]
+  --[[ use("rcarriga/nvim-dap-ui") ]]
+  --[[ use("theHamsta/nvim-dap-virtual-text") ]]
 
   -- -- Source code version control
   use("tpope/vim-fugitive") -- Git

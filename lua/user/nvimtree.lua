@@ -1,5 +1,10 @@
 vim.highlight.NvimTreeFolderIcon = "guibg=blue"
-require("nvim-tree").setup({
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+  return
+end
+
+nvim_tree.setup({
   respect_buf_cwd = true,
 	disable_netrw = true,
 	update_cwd = true,
@@ -18,7 +23,7 @@ require("nvim-tree").setup({
 		},
 	},
   renderer = {
-    highlight_opened_files = "icon",
+    --[[ highlight_opened_files = "icon", ]]
     highlight_git = true,
     indent_markers = {
       enable = false,
